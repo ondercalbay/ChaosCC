@@ -2,8 +2,8 @@
 
 namespace ChaosCC.DataLayer.Abstract
 {
-    public interface IKullaniciDal:IGenericDal<Kullanici>
+    public interface IKullaniciDal : IGenericDal<Kullanici>
     {
-        
+
     }
 }

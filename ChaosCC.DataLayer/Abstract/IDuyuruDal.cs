@@ -2,7 +2,7 @@
 
 namespace ChaosCC.DataLayer.Abstract
 {
-    public interface IDuyuruDal:IGenericDal<Duyuru>
+    public interface IDuyuruDal : IGenericDal<Duyuru>
     {
     }
 }

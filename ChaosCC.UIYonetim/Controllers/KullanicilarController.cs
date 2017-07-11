@@ -32,7 +32,7 @@ namespace ChaosCC.UIYonetim.Controllers
         //    if (Request["id"] != "")
         //    {
         //        ViewBag.Message = "Kullanicilar Düzenle";
-        //        kullaniciDto = manager.Get(Convert.ToInt32(Request["id"]));
+        //        kullaniciDto = _servis.Get(Convert.ToInt32(Request["id"]));
         //    }
         //    else
         //    {

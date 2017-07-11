@@ -27,6 +27,8 @@ namespace ChaosCC.UIYonetim
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            AutoMapperConfiguration.Initialize();
+
             Bootstrapper();
 
         }
@@ -35,6 +37,7 @@ namespace ChaosCC.UIYonetim
         {
             var containerBuilder = new ContainerBuilder();
             containerBuilder.RegisterType<KullaniciManager>().As<IKullaniciManager>().WithParameter("dal", new EfKullaniciDal()).InstancePerLifetimeScope();
+            containerBuilder.RegisterType<DuyuruManager>().As<IDuyuruManager>().WithParameter("dal", new EfDuyuruDal()).InstancePerLifetimeScope();
             //containerBuilder.RegisterType<IKullaniciDal>().As<EfKullaniciDal>().InstancePerLifetimeScope();
 
             //containerBuilder.RegisterWebApiFilterProvider(GlobalConfiguration.Configuration);

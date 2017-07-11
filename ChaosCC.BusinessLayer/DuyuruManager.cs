@@ -5,9 +5,6 @@ using ChaosCC.Entity;
 using ChaosCC.InterfaceLayer;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChaosCC.BusinessLayer
 {
@@ -31,22 +28,28 @@ namespace ChaosCC.BusinessLayer
 
         public void Delete(int id)
         {
-             _dal.Delete(id);
+            _dal.Delete(id);
         }
 
         public List<DuyuruListDto> Get(Duyuru filter)
         {
-            throw new NotImplementedException();
+            return Mapper.Map<List<Duyuru>, List<DuyuruListDto>>(_dal.Get(filter));
         }
 
         public DuyuruEditDto Get(int id)
         {
-            throw new NotImplementedException();
+            return Mapper.Map<DuyuruEditDto>(_dal.Get(id));
         }
 
         public DuyuruEditDto Update(DuyuruEditDto editDto)
         {
-            throw new NotImplementedException();
+            Duyuru ent = Mapper.Map<Duyuru>(editDto);
+            ent.EkleyenId = 1;
+            ent.EklemeZamani = DateTime.Now;
+            ent.GuncelleyenId = 1;
+            ent.GuncellemeZamani = DateTime.Now;
+            ent.Aktif = true;
+            return Mapper.Map<DuyuruEditDto>(_dal.Update(ent));
         }
     }
 }

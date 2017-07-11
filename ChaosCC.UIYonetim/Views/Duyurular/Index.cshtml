@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ChaosCC.Dto.KullaniciListDto>
+﻿@model IEnumerable<ChaosCC.Dto.DuyuruListDto>
 
 @{
     ViewBag.Title = "Index";
@@ -13,10 +13,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Adi)
+            @Html.DisplayNameFor(model => model.Tarih)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Soyadi)
+            @Html.DisplayNameFor(model => model.Baslik)
         </th>
         <th></th>
     </tr>
@@ -25,10 +25,10 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Adi)
+                @Html.DisplayFor(modelItem => item.Tarih)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Soyadi)
+                @Html.DisplayFor(modelItem => item.Baslik)
             </td>
             <td>
                 @Html.ActionLink("Güncelle", "Edit", new { id = item.Id }) |

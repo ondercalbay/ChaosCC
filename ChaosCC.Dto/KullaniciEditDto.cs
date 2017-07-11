@@ -3,7 +3,7 @@
 namespace ChaosCC.Dto
 {
     public class KullaniciEditDto
-    {        
+    {
         public int Id { get; set; }
         [Required]
         [MaxLength(50)]
@@ -20,8 +20,8 @@ namespace ChaosCC.Dto
         [Required]
         [MaxLength(100)]
         public string EMail { get; set; }
-        public int EkleyenId { get; set; }        
+        public int EkleyenId { get; set; }
         public int GuncelleyenId { get; set; }
-        
+
     }
 }

@@ -35,9 +35,7 @@ namespace ChaosCC.BusinessLayer
 
         public List<KullaniciListDto> Get(Kullanici filter)
         {
-            var kullanici = _dal.Get(filter);
-            var kullanicilarDto = Mapper.Map<List<Kullanici>,List<KullaniciListDto>>(kullanici);
-            return kullanicilarDto;
+            return Mapper.Map<List<KullaniciListDto>>(_dal.Get(filter));
         }
 
         public KullaniciEditDto Get(int id)
@@ -45,15 +43,15 @@ namespace ChaosCC.BusinessLayer
             return Mapper.Map<KullaniciEditDto>(_dal.Get(id));
         }
 
-        public KullaniciEditDto Update(KullaniciEditDto kullanici)
+        public KullaniciEditDto Update(KullaniciEditDto editDto)
         {
-            Kullanici kul = Mapper.Map<Kullanici>(kullanici);
-            kul.EkleyenId = 1;
-            kul.EklemeZamani = DateTime.Now;
-            kul.GuncelleyenId = 1;
-            kul.GuncellemeZamani = DateTime.Now;
-            kul.Aktif = true;
-            return Mapper.Map<KullaniciEditDto>(_dal.Update(kul));
+            Kullanici ent = Mapper.Map<Kullanici>(editDto);
+            ent.EkleyenId = 1;
+            ent.EklemeZamani = DateTime.Now;
+            ent.GuncelleyenId = 1;
+            ent.GuncellemeZamani = DateTime.Now;
+            ent.Aktif = true;
+            return Mapper.Map<KullaniciEditDto>(_dal.Update(ent));
         }
     }
 }

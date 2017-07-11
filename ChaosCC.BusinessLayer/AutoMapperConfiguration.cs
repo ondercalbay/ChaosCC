@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
 using ChaosCC.Dto;
 using ChaosCC.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChaosCC.BusinessLayer
 {
@@ -39,6 +34,10 @@ namespace ChaosCC.BusinessLayer
                 cfg.CreateMap<Kullanici, KullaniciEditDto>();
                 cfg.CreateMap<KullaniciEditDto, Kullanici>();
 
+                cfg.CreateMap<Duyuru, DuyuruListDto>();
+                cfg.CreateMap<DuyuruListDto, Duyuru>();
+                cfg.CreateMap<Duyuru, DuyuruEditDto>();
+                cfg.CreateMap<DuyuruEditDto, Duyuru>();
             }
             );
 

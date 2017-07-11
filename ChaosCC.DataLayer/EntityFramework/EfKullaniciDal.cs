@@ -38,9 +38,9 @@ namespace ChaosCC.DataLayer.EntityFramework
                         (search.KullaniciAdi == null || k.KullaniciAdi == search.KullaniciAdi) &&
                         (search.EMail == null || k.EMail == search.EMail) &&
                         (search.Sifre == null || k.Sifre == search.Sifre) &&
-                        (search.Aktif == null || k.Aktif == true)               
+                        (search.Aktif == null || k.Aktif == true)
                 )
-                .OrderByDescending(k => k.EklemeZamani).ToList<Kullanici>();
+                .OrderByDescending(k => k.EklemeZamani).ToList();
 
             return kullanicilarDto;
         }
@@ -50,18 +50,19 @@ namespace ChaosCC.DataLayer.EntityFramework
             return _context.Kullanicilar.Where(k => k.Id == id && k.Aktif == true).FirstOrDefault();
         }
 
-        public Kullanici Update(Kullanici kullanici)
+        public Kullanici Update(Kullanici ent)
         {
-            Kullanici kullaniciUpdate = Get(kullanici.Id);
-            kullaniciUpdate.Adi = kullanici.Adi;
-            kullaniciUpdate.Soyadi = kullanici.Soyadi;
-            kullaniciUpdate.KullaniciAdi = kullanici.KullaniciAdi;
-            kullaniciUpdate.Sifre = kullanici.Sifre;
-            kullaniciUpdate.EMail = kullanici.EMail;
-            kullaniciUpdate.GuncellemeZamani = DateTime.Now;
+            Kullanici newEnt = Get(ent.Id);
+            newEnt.Adi = ent.Adi;
+            newEnt.Soyadi = ent.Soyadi;
+            newEnt.KullaniciAdi = ent.KullaniciAdi;
+            newEnt.Sifre = ent.Sifre;
+            newEnt.EMail = ent.EMail;
+            newEnt.GuncelleyenId = ent.GuncelleyenId;
+            newEnt.GuncellemeZamani = DateTime.Now;
             _context.SaveChanges();
 
-            return kullanici;
+            return ent;
         }
     }
 }

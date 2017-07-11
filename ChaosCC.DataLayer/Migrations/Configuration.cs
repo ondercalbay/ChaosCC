@@ -1,5 +1,6 @@
 namespace ChaosCC.DataLayer.Migrations
 {
+    using ChaosCC.DataLayer.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -9,10 +10,10 @@ namespace ChaosCC.DataLayer.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ChaosCC.DataLayer.EntityFramework.ChaosContext context)
+        protected override void Seed(ChaosContext context)
         {
             //  This method will be called after migrating to the latest version.
 
