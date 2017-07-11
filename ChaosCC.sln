@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChaosCC.DataLayer", "ChaosCC.DataLayer\ChaosCC.DataLayer.csproj", "{25125F6F-1370-4ABE-976E-E74C928A089C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChaosCC.BusinessLayer", "ChaosCC.BusinessLayer\ChaosCC.BusinessLayer.csproj", "{55817010-9E1E-4640-8327-231301EDC4C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChaosCC.Entity", "ChaosCC.Entity\ChaosCC.Entity.csproj", "{642057D1-CAB5-46EA-AC8B-38095A27461F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIChaosYonetim", "UIChaosYonetim\UIChaosYonetim.csproj", "{31347DC2-56B5-4EE4-90E5-1B671FA866CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChaosCC.InterfaceLayer", "ChaosCC.InterfaceLayer\ChaosCC.InterfaceLayer.csproj", "{EFD26DC6-E7F2-4732-AAEB-A7A60388F1E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChaosCC.Dto", "ChaosCC.Dto\ChaosCC.Dto.csproj", "{0746F80C-7408-4E79-BD60-A7846E78A6D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChaosCC.UIYonetim", "ChaosCC.UIYonetim\ChaosCC.UIYonetim.csproj", "{86A69386-8441-4935-BCC8-E21F5F05D56F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{25125F6F-1370-4ABE-976E-E74C928A089C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25125F6F-1370-4ABE-976E-E74C928A089C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25125F6F-1370-4ABE-976E-E74C928A089C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25125F6F-1370-4ABE-976E-E74C928A089C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55817010-9E1E-4640-8327-231301EDC4C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55817010-9E1E-4640-8327-231301EDC4C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55817010-9E1E-4640-8327-231301EDC4C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55817010-9E1E-4640-8327-231301EDC4C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{642057D1-CAB5-46EA-AC8B-38095A27461F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{642057D1-CAB5-46EA-AC8B-38095A27461F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{642057D1-CAB5-46EA-AC8B-38095A27461F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{642057D1-CAB5-46EA-AC8B-38095A27461F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31347DC2-56B5-4EE4-90E5-1B671FA866CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31347DC2-56B5-4EE4-90E5-1B671FA866CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31347DC2-56B5-4EE4-90E5-1B671FA866CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31347DC2-56B5-4EE4-90E5-1B671FA866CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFD26DC6-E7F2-4732-AAEB-A7A60388F1E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFD26DC6-E7F2-4732-AAEB-A7A60388F1E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFD26DC6-E7F2-4732-AAEB-A7A60388F1E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFD26DC6-E7F2-4732-AAEB-A7A60388F1E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0746F80C-7408-4E79-BD60-A7846E78A6D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0746F80C-7408-4E79-BD60-A7846E78A6D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0746F80C-7408-4E79-BD60-A7846E78A6D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0746F80C-7408-4E79-BD60-A7846E78A6D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86A69386-8441-4935-BCC8-E21F5F05D56F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86A69386-8441-4935-BCC8-E21F5F05D56F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86A69386-8441-4935-BCC8-E21F5F05D56F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86A69386-8441-4935-BCC8-E21F5F05D56F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
