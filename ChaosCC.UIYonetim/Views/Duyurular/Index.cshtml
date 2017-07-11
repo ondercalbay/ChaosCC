@@ -5,15 +5,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Duyurular</h2>
 
-<p>
-    @Html.ActionLink("Yeni", "Edit")
+<p>    
+    <a class="btn btn-primary" href=@("/Duyurular/Edit/")><i class="glyphicon glyphicon-plus"></i> Yeni</a>
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Tarih)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DuyuruTipi)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Baslik)
@@ -25,14 +28,17 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Tarih)
+                @item.Tarih.ToString("dd.MM.yyyy")
+            </td>
+            <td>
+                @item.DuyuruTipi.ToString()
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Baslik)
             </td>
             <td>
-                @Html.ActionLink("Güncelle", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Sil", "Delete", new { id = item.Id })
+                <a class="btn btn-primary" href=@("/Duyurular/Edit/"+item.Id)><i class="glyphicon glyphicon-pencil"></i></a>
+                <a class="btn btn-primary" href=@("/Duyurular/Delete/" + item.Id)><i class="glyphicon glyphicon-trash"></i></a>                
             </td>
         </tr>
     }

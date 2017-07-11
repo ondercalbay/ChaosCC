@@ -20,13 +20,13 @@ namespace ChaosCC.UIYonetim.Controllers
         {
             return View(_service.Get(new Duyuru()));
         }
-
+         
         public ActionResult Edit(int? id)
         {
             DuyuruEditDto editDto;
-            if (id == 0)
+            if (id == null)
             {
-                editDto = new DuyuruEditDto();
+                editDto = new DuyuruEditDto { Tarih = DateTime.Now };
             }
             else
             {
