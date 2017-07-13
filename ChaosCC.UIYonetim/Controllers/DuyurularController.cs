@@ -15,12 +15,13 @@ namespace ChaosCC.UIYonetim.Controllers
             _service = service;
         }
 
-        // GET: Duyurular
+        [Authorize]
         public ActionResult Index()
         {
             return View(_service.Get(new Duyuru()));
         }
-         
+
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             DuyuruEditDto editDto;
@@ -35,6 +36,7 @@ namespace ChaosCC.UIYonetim.Controllers
             return View(editDto);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(DuyuruEditDto editDto)
         {
@@ -51,6 +53,7 @@ namespace ChaosCC.UIYonetim.Controllers
 
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Delete(int id)
         {

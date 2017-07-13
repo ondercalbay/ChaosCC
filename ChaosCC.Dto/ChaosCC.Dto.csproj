@@ -67,6 +67,7 @@
     <Compile Include="DuyuruListDto.cs" />
     <Compile Include="KullaniciEditDto.cs" />
     <Compile Include="KullaniciListDto.cs" />
+    <Compile Include="KullaniciLoginDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

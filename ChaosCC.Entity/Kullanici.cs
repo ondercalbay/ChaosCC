@@ -26,7 +26,7 @@ namespace ChaosCC.Entity
         public string Sifre { get; set; }
         [Required]
         [MaxLength(100)]
-        public string EMail { get; set; }
+        public string EPosta { get; set; }
         public int EkleyenId { get; set; }
         public DateTime EklemeZamani { get; set; }
         public int GuncelleyenId { get; set; }
