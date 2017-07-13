@@ -341,6 +341,7 @@
     <Content Include="Views\Duyurular\Index.cshtml" />
     <Content Include="Views\Duyurular\Edit.cshtml" />
     <Content Include="Views\Kullanicilar\Edit.cshtml" />
+    <Content Include="Views\Kullanicilar\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

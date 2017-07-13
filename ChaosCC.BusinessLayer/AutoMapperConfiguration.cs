@@ -33,6 +33,11 @@ namespace ChaosCC.BusinessLayer
                 cfg.CreateMap<KullaniciListDto, Kullanici>();
                 cfg.CreateMap<Kullanici, KullaniciEditDto>();
                 cfg.CreateMap<KullaniciEditDto, Kullanici>();
+                cfg.CreateMap<Kullanici, KullaniciLoginDto>();
+                cfg.CreateMap<KullaniciLoginDto, Kullanici>();
+                cfg.CreateMap<Kullanici, KullaniciLoginDto>();
+                cfg.CreateMap<KullaniciLoginDto, Kullanici>();
+
 
                 cfg.CreateMap<Duyuru, DuyuruListDto>();
                 cfg.CreateMap<DuyuruListDto, Duyuru>();

@@ -5,6 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script>
+    function Sil(id) {
+        if (confirm('Silmek istediğinize emin misiniz?')) {
+            window.location = "/Kullanicilar/Delete/" + id;
+        }
+    }
+</script>
+
 <h2>Index</h2>
 
 <p>
@@ -31,8 +39,8 @@
                 @Html.DisplayFor(modelItem => item.Soyadi)
             </td>
             <td>
-                @Html.ActionLink("Güncelle", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Sil", "Delete", new { id = item.Id })
+                <a class="btn btn-xs btn-primary" href=@("/Kullanicilar/Edit/"+item.Id)><i class="glyphicon glyphicon-pencil"></i></a>
+                <a class="btn btn-xs btn-danger" href=@($"javascript:Sil({item.Id});" )><i class="glyphicon glyphicon-trash"></i></a>
             </td>
         </tr>
     }

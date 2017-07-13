@@ -36,9 +36,9 @@ namespace ChaosCC.DataLayer.EntityFramework
                         (search.Adi == null || k.Adi == search.Adi) &&
                         (search.Soyadi == null || k.Soyadi == search.Soyadi) &&
                         (search.KullaniciAdi == null || k.KullaniciAdi == search.KullaniciAdi) &&
-                        (search.EMail == null || k.EMail == search.EMail) &&
+                        (search.EPosta == null || k.EPosta == search.EPosta) &&
                         (search.Sifre == null || k.Sifre == search.Sifre) &&
-                        (search.Aktif == null || k.Aktif == true)
+                        k.Aktif == true
                 )
                 .OrderByDescending(k => k.EklemeZamani).ToList();
 
@@ -57,7 +57,7 @@ namespace ChaosCC.DataLayer.EntityFramework
             newEnt.Soyadi = ent.Soyadi;
             newEnt.KullaniciAdi = ent.KullaniciAdi;
             newEnt.Sifre = ent.Sifre;
-            newEnt.EMail = ent.EMail;
+            newEnt.EPosta = ent.EPosta;
             newEnt.GuncelleyenId = ent.GuncelleyenId;
             newEnt.GuncellemeZamani = DateTime.Now;
             _context.SaveChanges();

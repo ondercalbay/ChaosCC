@@ -1,24 +1,55 @@
 ﻿using ChaosCC.BusinessLayer;
-using ChaosCC.DataLayer.Abstract;
 using ChaosCC.DataLayer.EntityFramework;
 using ChaosCC.Dto;
 using ChaosCC.Entity;
 using ChaosCC.InterfaceLayer;
 using System;
 using System.Web.Mvc;
-
+using System.Web.Security;
 
 namespace ChaosCC.UIYonetim.Controllers
 {
     public class KullanicilarController : Controller
     {
         private readonly IKullaniciManager _servis = new KullaniciManager(new EfKullaniciDal());
-
+        
         public KullanicilarController(IKullaniciManager kullaniciServis)
         {
             _servis = kullaniciServis;
         }
-        // GET: Kullanici        
+
+        public ActionResult Login()
+        {
+            return View(new KullaniciLoginDto());
+        }
+                
+        [HttpPost]
+        public ActionResult Login(KullaniciLoginDto kullanici, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                KullaniciEditDto kullaniciAuth = _servis.Authenticate(kullanici);
+                if (kullaniciAuth == null)
+                {
+                    ModelState.AddModelError("Hata", "Kullanıcı adı veya şifresi hatalı.");
+                }
+                else
+                {
+                    FormsAuthentication.SetAuthCookie(kullaniciAuth.KullaniciAdi, false);
+                    return Redirect(returnUrl ?? "/");
+                }
+            }
+            return View();
+        }
+
+        public ActionResult SignOut()
+        {
+            FormsAuthentication.SignOut();
+            return Redirect("/");
+        }
+
+        // GET: Kullanici
+        [Authorize]
         public ActionResult Index()
         {
             ViewBag.Message = "Kullanicilar";
@@ -41,7 +72,7 @@ namespace ChaosCC.UIYonetim.Controllers
 
         //    return View(kullaniciDto);
         //}
-
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             KullaniciEditDto kullaniciDto = new KullaniciEditDto();
@@ -49,6 +80,7 @@ namespace ChaosCC.UIYonetim.Controllers
             {
                 ViewBag.Message = "Kullanicilar Düzenle";
                 kullaniciDto = _servis.Get(Convert.ToInt32(id));
+                kullaniciDto.SifreTekrar = kullaniciDto.Sifre;
             }
             else
             {
@@ -64,6 +96,7 @@ namespace ChaosCC.UIYonetim.Controllers
         //    return View(manager.Get(id));
         //}
 
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(KullaniciEditDto kullanici)
         {
@@ -80,6 +113,7 @@ namespace ChaosCC.UIYonetim.Controllers
 
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Delete(int id)
         {
