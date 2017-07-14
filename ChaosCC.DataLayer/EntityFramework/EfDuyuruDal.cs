@@ -29,7 +29,7 @@ namespace ChaosCC.DataLayer.EntityFramework
         public List<Duyuru> Get(Duyuru filter)
         {
             return _context.Duyurular.Where(t =>
-             filter.Id == 0 || t.Id == filter.Id &&
+             (filter.Id == 0 || t.Id == filter.Id) &&
              t.Aktif == true).ToList();
         }
 
