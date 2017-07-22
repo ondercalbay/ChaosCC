@@ -37,16 +37,22 @@
 
     @Scripts.Render("~/bundles/jquery")    
     @Scripts.Render("~/bundles/bootstrap")
-    @*@Scripts.Render("~/bundles/jqueryui")*@
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
+    @Scripts.Render("~/Scripts/moment.js")
+
+
+
     
     @RenderSection("scripts", required: false)
 
 
-    @*<link rel="stylesheet" href="/Scripts/froala-editor/css/froala_editor.pkgd.min.css">
+    <link rel="stylesheet" href="/Scripts/froala-editor/css/froala_editor.pkgd.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
     <script type="text/javascript" src="/Scripts/froala-editor/js/froala_editor.pkgd.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>*@
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
 
     <script src="/Scripts/sayfalar/genelscript.js"></script>
     <link href="/Content/font-awesome.min.css" rel="stylesheet" type="text/css" />

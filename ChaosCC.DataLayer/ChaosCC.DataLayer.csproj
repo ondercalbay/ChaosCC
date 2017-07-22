@@ -61,6 +61,10 @@
     <Compile Include="Migrations\201707131432282_EMailDegisti.Designer.cs">
       <DependentUpon>201707131432282_EMailDegisti.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707191430183_datetimetodate.cs" />
+    <Compile Include="Migrations\201707191430183_datetimetodate.Designer.cs">
+      <DependentUpon>201707191430183_datetimetodate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -80,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707131432282_EMailDegisti.resx">
       <DependentUpon>201707131432282_EMailDegisti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707191430183_datetimetodate.resx">
+      <DependentUpon>201707191430183_datetimetodate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

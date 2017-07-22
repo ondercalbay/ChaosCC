@@ -27,7 +27,7 @@ namespace ChaosCC.UIYonetim.Controllers
             DuyuruEditDto editDto;
             if (id == null)
             {
-                editDto = new DuyuruEditDto { Tarih = DateTime.Now };
+                editDto = new DuyuruEditDto { Tarih = DateTime.Today };
             }
             else
             {

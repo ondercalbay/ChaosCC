@@ -10,7 +10,7 @@ namespace ChaosCC.Dto
         public int Id { get; set; }
         [Required]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}" ,ApplyFormatInEditMode =true)]
         public DateTime Tarih { get; set; }
         [Required]
         [Display(Name = "Duyuru Tİpi")]

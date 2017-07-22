@@ -8,6 +8,7 @@ namespace ChaosCC.Entity
     public class Duyuru : BaseEntity
     {
         [Required]
+        [DataType(DataType.Date)]
         public DateTime Tarih { get; set; }
         [Required]
         public EnuDuyuruTipi DuyuruTipi { get; set; }
