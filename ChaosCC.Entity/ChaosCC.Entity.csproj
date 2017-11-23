@@ -41,10 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aidat.cs" />
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Duyuru.cs" />
+    <Compile Include="Kasa.cs" />
+    <Compile Include="KasaHareketleri.cs" />
     <Compile Include="KilometreBilgi.cs" />
     <Compile Include="Kullanici.cs" />
+    <Compile Include="Motosiklet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Uye.cs" />
   </ItemGroup>

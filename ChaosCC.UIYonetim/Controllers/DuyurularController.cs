@@ -2,6 +2,7 @@
 using ChaosCC.Entity;
 using ChaosCC.InterfaceLayer;
 using System;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace ChaosCC.UIYonetim.Controllers
@@ -18,7 +19,7 @@ namespace ChaosCC.UIYonetim.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View(_service.Get(new Duyuru()));
+            return View(_service.Get(new Duyuru()).OrderByDescending(x=>x.Tarih));
         }
 
         [Authorize]
