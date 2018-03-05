@@ -8,21 +8,22 @@ using System.Web.Mvc;
 using System.Web.Security;
 
 namespace ChaosCC.UIYonetim.Controllers
-{
+{    
     public class KullanicilarController : Controller
     {
         private readonly IKullaniciManager _servis = new KullaniciManager(new EfKullaniciDal());
-        
+
         public KullanicilarController(IKullaniciManager kullaniciServis)
         {
             _servis = kullaniciServis;
+            
         }
 
         public ActionResult Login()
         {
             return View(new KullaniciLoginDto());
         }
-                
+
         [HttpPost]
         public ActionResult Login(KullaniciLoginDto kullanici, string returnUrl)
         {
