@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ChaosCC.Dto.DevamsizlikListDto>
+
+@{
+    ViewBag.Title = "Devamsizlik";
+}
+
+<h2>Devamsizlik</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Kaydet" class="btn btn-default" />
+        </div>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EtkinlikAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KullaniciAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Geldi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aciklama)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.EtkinlikAdi)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.KullaniciAdi)
+                    @Html.HiddenFor(modelItem => item.KullaniciId)
+                </td>
+                <td>
+                    @Html.CheckBoxFor(modelItem => item.Geldi)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Aciklama)
+                    @Html.HiddenFor(modelItem => item.Id)
+                </td>
+            </tr>
+        }
+
+    </table>
+}

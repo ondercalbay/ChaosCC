@@ -639,6 +639,7 @@
     <Content Include="Views\Etkinliks\Index.cshtml" />
     <Content Include="Views\Etkinlik\Index.cshtml" />
     <Content Include="Views\Etkinlik\Edit.cshtml" />
+    <Content Include="Views\Etkinlik\Devamsizlik.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

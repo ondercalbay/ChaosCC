@@ -79,6 +79,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ChaosCC.Dto\ChaosCC.Dto.csproj">
+      <Project>{0746F80C-7408-4E79-BD60-A7846E78A6D0}</Project>
+      <Name>ChaosCC.Dto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ChaosCC.Entity\ChaosCC.Entity.csproj">
       <Project>{642057D1-CAB5-46EA-AC8B-38095A27461F}</Project>
       <Name>ChaosCC.Entity</Name>

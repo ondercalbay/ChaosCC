@@ -10,6 +10,8 @@ namespace ChaosCC.Dto
 {
     public class EtkinlikListDto
     {
+        public int Id { get; set; }
+
         public string Yer { get; set; }
 
         public EnuEtkinlikTuru EtlinlikTuru { get; set; }

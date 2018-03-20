@@ -2,6 +2,7 @@
 using ChaosCC.Entity;
 using ChaosCC.InterfaceLayer;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -61,7 +62,25 @@ namespace ChaosCC.UIYonetim.Controllers
         {
             _service.Delete(id);
             return RedirectToAction("");
-
         }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult Devamsizlik(int id)
+        {
+            DevamsizlikGridDto grid = new DevamsizlikGridDto();
+            grid.Grid = _service.GetDevamsizlik(Convert.ToInt32(id));
+            
+            return View(grid.Grid);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Devamsizlik(List<DevamsizlikListDto> devamsizlik)
+        {            
+            return View(devamsizlik);
+        }
+
+
     }
 }

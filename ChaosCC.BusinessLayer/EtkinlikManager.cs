@@ -51,5 +51,15 @@ namespace ChaosCC.BusinessLayer
             ent.Aktif = true;
             return Mapper.Map<EtkinlikEditDto>(_dal.Update(ent));
         }
+
+        public List<DevamsizlikListDto> GetDevamsizlik(int etkinlikId)
+        {
+
+            List<DevamsizlikListDto> ent = _dal.GetDevamsizlik(etkinlikId);
+
+            List<DevamsizlikListDto> result = new List<DevamsizlikListDto>();
+
+            return ent;
+        }
     }
 }

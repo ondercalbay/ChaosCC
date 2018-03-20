@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DevamsizlikListDto.cs" />
     <Compile Include="DuyuruEditDto.cs" />
     <Compile Include="DuyuruListDto.cs" />
     <Compile Include="EtkinlikEditDto.cs" />
