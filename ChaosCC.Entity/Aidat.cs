@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using static ChaosCC.Entity.Enumlar;
 
 namespace ChaosCC.Entity
 {
@@ -10,12 +6,5 @@ namespace ChaosCC.Entity
     {
         public int KullaniciId { get; set; }
         public EnuAidatDurum Durum { get; set; }
-    }
-
-    public enum EnuAidatDurum
-    {
-        Odenmedi = 0,
-        Odendi = 1,
-        Donduruldu=2
     }
 }

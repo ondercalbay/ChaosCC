@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -164,6 +165,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DuyurularController.cs" />
+    <Compile Include="Controllers\EtkinlikController.cs" />
+    <Compile Include="Controllers\EtkinliksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KullanicilarController.cs" />
     <Compile Include="Global.asax.cs">
@@ -629,6 +632,13 @@
     <Content Include="Views\Kullanicilar\Edit.cshtml" />
     <Content Include="Views\Kullanicilar\Login.cshtml" />
     <Content Include="Views\Duyurular\Edit.cshtml" />
+    <Content Include="Views\Etkinliks\Create.cshtml" />
+    <Content Include="Views\Etkinliks\Delete.cshtml" />
+    <Content Include="Views\Etkinliks\Details.cshtml" />
+    <Content Include="Views\Etkinliks\Edit.cshtml" />
+    <Content Include="Views\Etkinliks\Index.cshtml" />
+    <Content Include="Views\Etkinlik\Index.cshtml" />
+    <Content Include="Views\Etkinlik\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

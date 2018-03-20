@@ -36,8 +36,19 @@ namespace ChaosCC.UIYonetim
         private void Bootstrapper()
         {
             var containerBuilder = new ContainerBuilder();
+
+            List<string> listClasslar = new List<string> { "Kullanici", "Duyuru", "Etkinlik" };
+
+            foreach (string item in listClasslar)
+            {
+                var manager = Activator.CreateInstance("AssemblyName", "TypeName");
+            }
+
+            
+
             containerBuilder.RegisterType<KullaniciManager>().As<IKullaniciManager>().WithParameter("dal", new EfKullaniciDal()).InstancePerLifetimeScope();
             containerBuilder.RegisterType<DuyuruManager>().As<IDuyuruManager>().WithParameter("dal", new EfDuyuruDal()).InstancePerLifetimeScope();
+            containerBuilder.RegisterType<DuyuruManager>().As<IEtkinlikManager>().WithParameter("dal", new EfEtkinlikDal()).InstancePerLifetimeScope();
             //containerBuilder.RegisterType<IKullaniciDal>().As<EfKullaniciDal>().InstancePerLifetimeScope();
 
             //containerBuilder.RegisterWebApiFilterProvider(GlobalConfiguration.Configuration);

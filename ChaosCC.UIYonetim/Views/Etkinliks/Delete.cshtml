@@ -1,0 +1,97 @@
+﻿@model ChaosCC.Entity.Etkinlik
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Etkinlik</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Yer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EtlinlikTuru)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EtlinlikTuru)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tarih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EkleyenId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EkleyenId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EklemeZamani)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EklemeZamani)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuncelleyenId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuncelleyenId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuncellemeZamani)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuncellemeZamani)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aktif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aktif)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

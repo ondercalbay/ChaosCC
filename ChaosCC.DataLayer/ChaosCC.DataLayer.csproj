@@ -48,10 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IDuyuruDal.cs" />
+    <Compile Include="Abstract\IEtkinlikDal.cs" />
     <Compile Include="Abstract\IGenericDal.cs" />
     <Compile Include="Abstract\IKullaniciDal.cs" />
     <Compile Include="EntityFramework\ChaosContext.cs" />
     <Compile Include="EntityFramework\EfDuyuruDal.cs" />
+    <Compile Include="EntityFramework\EfEtkinlikDal.cs" />
     <Compile Include="EntityFramework\EfKullaniciDal.cs" />
     <Compile Include="Migrations\201707111111434_baslangic.cs" />
     <Compile Include="Migrations\201707111111434_baslangic.Designer.cs">
@@ -64,6 +66,10 @@
     <Compile Include="Migrations\201707191430183_datetimetodate.cs" />
     <Compile Include="Migrations\201707191430183_datetimetodate.Designer.cs">
       <DependentUpon>201707191430183_datetimetodate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803200916357_Etkinlik_Devamsizlik.cs" />
+    <Compile Include="Migrations\201803200916357_Etkinlik_Devamsizlik.Designer.cs">
+      <DependentUpon>201803200916357_Etkinlik_Devamsizlik.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707191430183_datetimetodate.resx">
       <DependentUpon>201707191430183_datetimetodate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803200916357_Etkinlik_Devamsizlik.resx">
+      <DependentUpon>201803200916357_Etkinlik_Devamsizlik.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

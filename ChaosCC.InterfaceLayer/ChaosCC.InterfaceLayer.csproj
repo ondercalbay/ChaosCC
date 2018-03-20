@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IDuyuruManager.cs" />
+    <Compile Include="IEtkinlikManager.cs" />
     <Compile Include="IGenericManager.cs" />
     <Compile Include="IKullaniciManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

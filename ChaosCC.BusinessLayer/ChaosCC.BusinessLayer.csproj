@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AutoMapperConfiguration.cs" />
     <Compile Include="DuyuruManager.cs" />
+    <Compile Include="EtkinlikManager.cs" />
     <Compile Include="KullaniciManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

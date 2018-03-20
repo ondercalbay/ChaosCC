@@ -65,6 +65,8 @@
   <ItemGroup>
     <Compile Include="DuyuruEditDto.cs" />
     <Compile Include="DuyuruListDto.cs" />
+    <Compile Include="EtkinlikEditDto.cs" />
+    <Compile Include="EtkinlikListDto.cs" />
     <Compile Include="KullaniciEditDto.cs" />
     <Compile Include="KullaniciListDto.cs" />
     <Compile Include="KullaniciLoginDto.cs" />
