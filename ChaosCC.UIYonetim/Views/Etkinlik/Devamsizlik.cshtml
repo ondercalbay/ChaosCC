@@ -40,8 +40,8 @@
                     @Html.TextBoxFor(modelItem => item.KullaniciAdi)
                     @Html.HiddenFor(modelItem => item.KullaniciId)
                 </td>
-                <td>
-                    @Html.CheckBoxFor(modelItem => item.Geldi)
+                <td>                    
+                    <input checked=@(item.Geldi?"cheked":"uncheked") data-val="true" id="item.Geldi" name="item.Geldi" type="checkbox">
                 </td>
                 <td>
                     @Html.TextBoxFor(modelItem => item.Aciklama)

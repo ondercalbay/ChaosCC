@@ -56,6 +56,8 @@ namespace ChaosCC.DataLayer.EntityFramework
                             Geldi = ld.Geldi != null ? ld.Geldi : true,
                             Aciklama = ld.Aciklama
                         };
+
+            //_context.Database.SqlQuery()
             //return _context.Etkinlikler.Join<.Where(t =>
             //(filter.Id == 0 || t.Id == filter.Id) &&
             //t.Aktif == true).ToList();
