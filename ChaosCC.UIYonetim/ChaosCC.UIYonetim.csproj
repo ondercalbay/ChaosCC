@@ -673,11 +673,6 @@
     <Content Include="Views\Kullanicilar\Edit.cshtml" />
     <Content Include="Views\Kullanicilar\Login.cshtml" />
     <Content Include="Views\Duyurular\Edit.cshtml" />
-    <Content Include="Views\Etkinliks\Create.cshtml" />
-    <Content Include="Views\Etkinliks\Delete.cshtml" />
-    <Content Include="Views\Etkinliks\Details.cshtml" />
-    <Content Include="Views\Etkinliks\Edit.cshtml" />
-    <Content Include="Views\Etkinliks\Index.cshtml" />
     <Content Include="Views\Etkinlik\Index.cshtml" />
     <Content Include="Views\Etkinlik\Edit.cshtml" />
     <Content Include="Views\Etkinlik\Devamsizlik.cshtml" />

@@ -9,16 +9,16 @@
     System.Globalization.DateTimeFormatInfo t = culture.DateTimeFormat;
 }
 
-<h2>Duyuru</h2>
-
+<h2>@ViewBag.Title</h2>
+<hr />
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Detay</h4>
-        <hr />
+        
+        
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Tarih, htmlAttributes: new { @class = "control-label col-md-2" })

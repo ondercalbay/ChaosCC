@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ChaosCC.Entity;
+using System.Data.Entity.Validation;
 
 namespace ChaosCC.DataLayer.EntityFramework
 {
@@ -14,9 +15,32 @@ namespace ChaosCC.DataLayer.EntityFramework
 
         public Duyuru Add(Duyuru ent)
         {
-            _context.Duyurular.Add(ent);
-            _context.SaveChanges();
-            return ent;
+            try
+            {
+                _context.Duyurular.Add(ent);
+                _context.SaveChanges();
+                return ent;
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw e;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
 
         public void Delete(int id)
