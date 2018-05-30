@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<ChaosCC.Dto.DuyuruListDto>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Duyurular";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Duyurular</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>    
     <a class="btn btn-primary" href=@("/Duyurular/Edit/")><i class="glyphicon glyphicon-plus"></i> Yeni</a>
@@ -21,7 +21,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Baslik)
         </th>
-        <th></th>
+        <th>İşlem</th>
     </tr>
 
     @foreach (var item in Model)
@@ -37,8 +37,8 @@
                 @Html.DisplayFor(modelItem => item.Baslik)
             </td>
             <td>
-                <a class="btn btn-xs btn-primary" href=@("/Duyurular/Edit/"+item.Id)><i class="glyphicon glyphicon-pencil"></i></a>
-                <a class="btn btn-xs btn-danger" href=@("/Duyurular/Delete/" + item.Id)><i class="glyphicon glyphicon-trash"></i></a>
+                <a class="btn btn-sm btn-outline-primary" href=@("/Duyurular/Edit/"+item.Id)><i class="fas fa-pencil-alt"></i></a>
+                <a class="btn btn-sm btn-outline-danger" href=@("/Duyurular/Delete/" + item.Id)><i class="fas fa-trash"></i></a>
             </td>
         </tr>
     }

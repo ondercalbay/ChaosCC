@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ChaosCC.Dto.KullaniciListDto>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Kullanıcılar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,12 +13,12 @@
     }
 </script>
 
-<h2>Kullanıcılar</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>    
     <a class="btn btn-primary" href=@("/Kullanicilar/Edit/")><i class="glyphicon glyphicon-plus"></i> Yeni</a>
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Adi)
@@ -26,7 +26,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Soyadi)
         </th>
-        <th></th>
+        <th>İşlem</th>
     </tr>
 
     @foreach (var item in Model)
@@ -39,8 +39,8 @@
                 @Html.DisplayFor(modelItem => item.Soyadi)
             </td>
             <td>
-                <a class="btn btn-xs btn-primary" href=@("/Kullanicilar/Edit/"+item.Id)><i class="glyphicon glyphicon-pencil"></i></a>
-                <a class="btn btn-xs btn-danger" href=@($"javascript:Sil({item.Id});" )><i class="glyphicon glyphicon-trash"></i></a>
+                <a class="btn btn-sm btn-outline-primary" href=@("/Kullanicilar/Edit/"+item.Id)><i class="fas fa-pencil-alt"></i></a>
+                <a class="btn btn-sm btn-outline-danger" href=@($"javascript:Sil({item.Id});" )><i class="fas fa-trash"></i></a>
             </td>
         </tr>
     }
