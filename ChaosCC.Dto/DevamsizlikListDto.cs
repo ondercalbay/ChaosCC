@@ -19,7 +19,7 @@ namespace ChaosCC.Dto
     public class DevamsizlikGridDto
     {
         public int Id { get; set; }
-        public string EtkinlikAdi { get; set; }
+        public EtkinlikEditDto Etkinlik { get; set; }
         public List<DevamsizlikListDto> Grid { get; set; }
     }
 }

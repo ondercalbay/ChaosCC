@@ -74,17 +74,19 @@ namespace ChaosCC.BusinessLayer
                 ent.KullaniciId = item.KullaniciId;
                 ent.Geldi = item.Geldi;
                 ent.Aciklama = item.Aciklama;
+                ent.EkleyenId = 1;
+                ent.EklemeZamani = DateTime.Now;
+                ent.GuncelleyenId = 1;
+                ent.GuncellemeZamani = DateTime.Now;
+                ent.Aktif = true;
                 if (item.Id == 0)
                 {
-                    ent.EkleyenId = 1;
-                    ent.EklemeZamani = DateTime.Now;
+                    
                     item.Id = _dal.AddDevamsizlik(ent).Id;
                 }
                 else
                 {
                     ent.Id = item.Id;
-                    ent.GuncelleyenId = 1;
-                    ent.GuncellemeZamani = DateTime.Now;
                     _dal.UpdateDevamsizlik(ent);
                 }
             }

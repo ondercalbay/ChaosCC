@@ -70,6 +70,8 @@ namespace ChaosCC.UIYonetim.Controllers
         {
             DevamsizlikGridDto dto = new DevamsizlikGridDto();
             dto.Id = id;
+            
+            dto.Etkinlik = _service.Get(id);
             dto.Grid = _service.GetDevamsizlik(id);            
             return View(dto);
         }

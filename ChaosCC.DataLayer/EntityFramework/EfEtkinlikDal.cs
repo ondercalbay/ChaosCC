@@ -52,7 +52,7 @@ namespace ChaosCC.DataLayer.EntityFramework
                         join d in _context.Devamsizliklar on k.Id equals d.KullaniciId into listDevamsizliklar
                         from ld in listDevamsizliklar.DefaultIfEmpty()
                         join e in _context.Etkinlikler on ld.EtkinlikId equals e.Id into listetkinlikler
-                        from le in listetkinlikler.DefaultIfEmpty()
+                        from le in listetkinlikler.DefaultIfEmpty()                        
                         orderby k.KullaniciAdi
                         select new DevamsizlikListDto
                         {
@@ -110,6 +110,7 @@ namespace ChaosCC.DataLayer.EntityFramework
             newEnt.Aciklama = ent.Aciklama;
             newEnt.GuncelleyenId = ent.GuncelleyenId;
             newEnt.GuncellemeZamani = DateTime.Now;
+            newEnt.Aktif = ent.Aktif;
             _context.SaveChanges();
 
             return ent;
