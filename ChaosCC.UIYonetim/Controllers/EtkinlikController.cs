@@ -68,37 +68,19 @@ namespace ChaosCC.UIYonetim.Controllers
         [HttpGet]
         public ActionResult Devamsizlik(int id)
         {
-            DevamsizlikGridDto grid = new DevamsizlikGridDto();
-            grid.Grid = _service.GetDevamsizlik(Convert.ToInt32(id));
-
-            return View(grid.Grid);
+            DevamsizlikGridDto dto = new DevamsizlikGridDto();
+            dto.Id = id;
+            dto.Grid = _service.GetDevamsizlik(id);            
+            return View(dto);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Devamsizlik(FormCollection form)
+        public ActionResult Devamsizlik(DevamsizlikGridDto model)
         {
+            _service.SaveDevamsizlik(model);
 
-            List<DevamsizlikListDto> gridInsert = new List<DevamsizlikListDto>();
-            List<DevamsizlikListDto> gridUpdate = new List<DevamsizlikListDto>();
-
-            List<DevamsizlikListDto> grid = new List<DevamsizlikListDto>();
-
-
-            for (int i = 0; i < form["item.Id"].Split(',').Length; i++)
-            {
-                DevamsizlikListDto item = new DevamsizlikListDto();
-                item.Id = Convert.ToInt32(form["item.Id"].Split(',')[i]);
-                item.Aciklama = form["item.Aciklama"].Split(',')[i];
-                item.EtkinlikAdi = form["item.EtkinlikAdi"].Split(',')[i];
-                item.Geldi = Convert.ToBoolean(form["item.Geldi"].Split(',')[i]);
-                item.KullaniciAdi = form["item.KullaniciAdi"].Split(',')[i];
-                item.KullaniciId = Convert.ToInt32(form["item.KullaniciId"].Split(',')[i]);
-
-                grid.Add(item);
-            }
-
-            return View(grid);
+            return RedirectToAction("");
         }
 
 

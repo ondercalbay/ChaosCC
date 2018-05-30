@@ -1,5 +1,4 @@
-﻿@model IEnumerable<ChaosCC.Dto.DevamsizlikListDto>
-
+﻿@model ChaosCC.Dto.DevamsizlikGridDto
 @{
     ViewBag.Title = "Devamsizlik";
 }
@@ -13,39 +12,34 @@
             <input type="submit" value="Kaydet" class="btn btn-default" />
         </div>
     </div>
-
+    @Html.HiddenFor(model => model.Id)
+    @Html.TextBoxFor(model => model.EtkinlikAdi)
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.EtkinlikAdi)
+                Kullanıcı Adı
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.KullaniciAdi)
+                Geldi
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Geldi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Aciklama)
+                Açıklama
             </th>
         </tr>
 
-        @foreach (var item in Model)
+        @foreach (var item in Model.Grid)
         {
             <tr>
                 <td>
-                    @Html.TextBoxFor(modelItem => item.EtkinlikAdi)
-                </td>
-                <td>
-                    @Html.TextBoxFor(modelItem => item.KullaniciAdi)
-                    @Html.HiddenFor(modelItem => item.KullaniciId)
-                </td>
-                <td>                    
-                    <input checked=@(item.Geldi?"cheked":"uncheked") data-val="true" id="item.Geldi" name="item.Geldi" type="checkbox">
-                </td>
-                <td>
-                    @Html.TextBoxFor(modelItem => item.Aciklama)
                     @Html.HiddenFor(modelItem => item.Id)
+                    @Html.HiddenFor(modelItem => item.KullaniciId)
+                    @item.KullaniciAdi
+                </td>
+                <td>
+                    @Html.CheckBoxFor(modelItem => item.Geldi)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Aciklama)                    
                 </td>
             </tr>
         }

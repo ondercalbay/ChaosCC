@@ -9,7 +9,7 @@ namespace ChaosCC.Dto
     public class DevamsizlikListDto
     {
         public int Id { get; set; }
-        public string EtkinlikAdi { get; set; }
+        
         public int KullaniciId { get; set; }
         public string KullaniciAdi { get; set; }
         public bool Geldi { get; set; }
@@ -18,6 +18,8 @@ namespace ChaosCC.Dto
 
     public class DevamsizlikGridDto
     {
+        public int Id { get; set; }
+        public string EtkinlikAdi { get; set; }
         public List<DevamsizlikListDto> Grid { get; set; }
     }
 }

@@ -55,11 +55,39 @@ namespace ChaosCC.BusinessLayer
         public List<DevamsizlikListDto> GetDevamsizlik(int etkinlikId)
         {
 
-            List<DevamsizlikListDto> ent = _dal.GetDevamsizlik(etkinlikId);
+            List<DevamsizlikListDto> ent = _dal.GetDevamsizlikWithEtkinlikId(etkinlikId);
 
             List<DevamsizlikListDto> result = new List<DevamsizlikListDto>();
 
             return ent;
+        }
+
+        public void SaveDevamsizlik(DevamsizlikGridDto devamsizlikDto)
+        {
+            List<Devamsizlik> insertModel = new List<Devamsizlik>();
+            List<Devamsizlik> updateModel = new List<Devamsizlik>();
+
+            foreach (var item in devamsizlikDto.Grid)
+            {
+                Devamsizlik ent = new Devamsizlik();
+                ent.EtkinlikId = devamsizlikDto.Id;
+                ent.KullaniciId = item.KullaniciId;
+                ent.Geldi = item.Geldi;
+                ent.Aciklama = item.Aciklama;
+                if (item.Id == 0)
+                {
+                    ent.EkleyenId = 1;
+                    ent.EklemeZamani = DateTime.Now;
+                    item.Id = _dal.AddDevamsizlik(ent).Id;
+                }
+                else
+                {
+                    ent.Id = item.Id;
+                    ent.GuncelleyenId = 1;
+                    ent.GuncellemeZamani = DateTime.Now;
+                    _dal.UpdateDevamsizlik(ent);
+                }
+            }
         }
     }
 }

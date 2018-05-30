@@ -20,6 +20,13 @@ namespace ChaosCC.DataLayer.EntityFramework
             return ent;
         }
 
+        public Devamsizlik AddDevamsizlik(Devamsizlik ent)
+        {
+            _context.Devamsizliklar.Add(ent);
+            _context.SaveChanges();
+            return ent;
+        }
+
         public void Delete(int id)
         {
             var ent = Get(id);
@@ -39,7 +46,7 @@ namespace ChaosCC.DataLayer.EntityFramework
             return Get(new Etkinlik { Id = id }).FirstOrDefault();
         }
 
-        public List<DevamsizlikListDto> GetDevamsizlik(int etkinlikId)
+        public List<DevamsizlikListDto> GetDevamsizlikWithEtkinlikId(int etkinlikId)
         {
             var query = from k in _context.Kullanicilar
                         join d in _context.Devamsizliklar on k.Id equals d.KullaniciId into listDevamsizliklar
@@ -49,8 +56,7 @@ namespace ChaosCC.DataLayer.EntityFramework
                         orderby k.KullaniciAdi
                         select new DevamsizlikListDto
                         {
-                            Id = ld.Id != null ? (int)ld.Id : 0,
-                            EtkinlikAdi = le.EtlinlikTuru + "-" + le.Yer,
+                            Id = ld.Id != null ? (int)ld.Id : 0,                            
                             KullaniciId = k.Id,
                             KullaniciAdi = k.KullaniciAdi,
                             Geldi = ld.Geldi != null ? ld.Geldi : true,
@@ -65,6 +71,8 @@ namespace ChaosCC.DataLayer.EntityFramework
             return query.ToList();
         }
 
+       
+
         public Etkinlik Update(Etkinlik ent)
         {
             Etkinlik newEnt = Get(ent.Id);
@@ -78,5 +86,34 @@ namespace ChaosCC.DataLayer.EntityFramework
 
             return ent;
         }
+
+        public List<Devamsizlik> GetDevamsizlik(Devamsizlik filter)
+        {
+            return _context.Devamsizliklar.Where(t =>
+             (filter.Id == 0 || t.Id == filter.Id) &&
+             (filter.EtkinlikId == 0 || t.EtkinlikId == filter.EtkinlikId) &&
+             (filter.KullaniciId == 0 || t.KullaniciId == filter.KullaniciId) &&             
+             t.Aktif == true).ToList();
+        }
+
+        public Devamsizlik GetDevamsizlik(int id)
+        {
+            return GetDevamsizlik(new Devamsizlik { Id = id }).FirstOrDefault();
+        }
+
+        public Devamsizlik UpdateDevamsizlik(Devamsizlik ent)
+        {
+            Devamsizlik newEnt = GetDevamsizlik(ent.Id);            
+            newEnt.EtkinlikId = ent.EtkinlikId;
+            newEnt.KullaniciId = ent.KullaniciId;
+            newEnt.Geldi = ent.Geldi;
+            newEnt.Aciklama = ent.Aciklama;
+            newEnt.GuncelleyenId = ent.GuncelleyenId;
+            newEnt.GuncellemeZamani = DateTime.Now;
+            _context.SaveChanges();
+
+            return ent;
+        }
+
     }
 }
