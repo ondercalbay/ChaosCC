@@ -34,9 +34,12 @@ namespace ChaosCC.DataLayer.EntityFramework
 
         public List<Etkinlik> Get(Etkinlik filter)
         {
-            return _context.Etkinlikler.Where(t =>
-             (filter.Id == 0 || t.Id == filter.Id) &&
-             t.Aktif == true).ToList();
+            return _context.Etkinlikler
+                .Where(t =>                
+                        (filter.Id == 0 || t.Id == filter.Id) &&
+                        t.Aktif == true
+                    )
+                .OrderByDescending(t=> t.Tarih).ToList();
         }
 
         public Etkinlik Get(int id)

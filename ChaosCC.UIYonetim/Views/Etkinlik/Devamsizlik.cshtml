@@ -59,7 +59,7 @@
                 <td>
                     @Html.TextBoxFor(m => Model.Grid[i].Aciklama)
                 </td>
-                <td>
+                <td class="text-right">
                     <a class="btn btn-sm btn-outline-danger" href=@($"javascript:Sil({Model.Grid[i].Id},{Model.Etkinlik.Id});" )><i class="fas fa-trash"></i></a>
                 </td>
             </tr>

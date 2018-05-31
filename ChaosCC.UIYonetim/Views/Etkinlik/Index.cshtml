@@ -28,8 +28,8 @@
         <th>
             @Html.DisplayNameFor(model => model.Yer)
         </th>
-        <th>Devamsızlık</th>
-        <th>İşlem</th>
+        <th class="text-center">Devamsızlık</th>
+        <th class="text-center">İşlem</th>
     </tr>
 
     @foreach (var item in Model)
@@ -44,10 +44,10 @@
             <td>
                 @item.Yer.ToString()
             </td>
-            <td>
+            <td class="text-center">
                 <a class="btn btn-sm btn-outline-primary" href=@("/Etkinlik/Devamsizlik/" + item.Id)><i class="fas fa-pencil-alt"></i></a>
             </td>
-            <td>
+            <td class="text-center">
                 <a class="btn btn-sm btn-outline-primary" href=@("/Etkinlik/Edit/"+item.Id)><i class="fas fa-pencil-alt"></i></a>
                 <a class="btn btn-sm btn-outline-danger" href=@($"javascript:Sil({item.Id});" )><i class="fas fa-trash"></i></a>
             </td>

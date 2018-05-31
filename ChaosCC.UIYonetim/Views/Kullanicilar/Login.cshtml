@@ -94,8 +94,10 @@
     @*<form class="form-signin">*@
     @using (Html.BeginForm("Login", "Kullanicilar", FormMethod.Post, new { @class = "form-signin" }))
     {
-        <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Chaos Turkey MC</h1>
+        <img class="mb-4" src="/Images/logo.png" alt="Chaos Turkey MC" width="200">
+
+
+        @*<h1 class="h3 mb-3 font-weight-normal">Chaos Turkey MC</h1>*@
         @Html.ValidationSummary();
         <label for="KullaniciAdi" class="sr-only">Kullanıcı Adı</label>
         <input type="text" id="KullaniciAdi" name="KullaniciAdi" class="form-control" placeholder="Kullanıcı Adı" required="" autofocus="">

@@ -4,11 +4,12 @@ using ChaosCC.Dto;
 using ChaosCC.Entity;
 using ChaosCC.InterfaceLayer;
 using System;
+using System.Threading;
 using System.Web.Mvc;
 using System.Web.Security;
 
 namespace ChaosCC.UIYonetim.Controllers
-{    
+{
     public class KullanicilarController : Controller
     {
         private readonly IKullaniciManager _servis = new KullaniciManager(new EfKullaniciDal());
@@ -16,7 +17,7 @@ namespace ChaosCC.UIYonetim.Controllers
         public KullanicilarController(IKullaniciManager kullaniciServis)
         {
             _servis = kullaniciServis;
-            
+
         }
 
         public ActionResult Login()
@@ -32,6 +33,7 @@ namespace ChaosCC.UIYonetim.Controllers
                 KullaniciEditDto kullaniciAuth = _servis.Authenticate(kullanici);
                 if (kullaniciAuth == null)
                 {
+                    Thread.Sleep(4000);
                     ModelState.AddModelError("Hata", "Kullanıcı adı veya şifresi hatalı.");
                 }
                 else

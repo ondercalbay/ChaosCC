@@ -29,7 +29,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Baslik)
         </th>
-        <th>İşlem</th>
+        <th class="text-center">İşlem</th>
     </tr>
 
     @foreach (var item in Model)
@@ -44,7 +44,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Baslik)
             </td>
-            <td>
+            <td class="text-center">
                 <a class="btn btn-sm btn-outline-primary" href=@("/Duyurular/Edit/"+item.Id)><i class="fas fa-pencil-alt"></i></a>
                 <a class="btn btn-sm btn-outline-danger" href=@($"javascript:Sil({item.Id});" )><i class="fas fa-trash"></i></a>
             </td>

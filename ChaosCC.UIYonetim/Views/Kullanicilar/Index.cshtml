@@ -20,7 +20,7 @@
 </p>
 <table class="table table-striped">
     <tr>
-        <th>
+        <th class="text-right">
             Sıra
         </th>
         <th>
@@ -32,7 +32,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Soyadi)
         </th>
-        <th>İşlem</th>
+        <th class="text-center">İşlem</th>
     </tr>
     @{
         int i = 0;
@@ -40,7 +40,7 @@
         {
             i += 1;
             <tr>
-                <td>
+                <td class="text-right">
                     @i
                 </td>
                 <td>
@@ -52,7 +52,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Soyadi)
                 </td>
-                <td>
+                <td class="text-center">
                     <a class="btn btn-sm btn-outline-primary" href=@("/Kullanicilar/Edit/"+item.Id)><i class="fas fa-pencil-alt"></i></a>
                     <a class="btn btn-sm btn-outline-danger" href=@($"javascript:Sil({item.Id});" )><i class="fas fa-trash"></i></a>
                 </td>

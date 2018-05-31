@@ -30,7 +30,7 @@ namespace ChaosCC.BusinessLayer
 
         public void Delete(int id)
         {
-            _dal.DevamsizlikDelete(id);
+            _dal.Delete(id);
         }
 
         public List<EtkinlikListDto> Get(Etkinlik filter)
