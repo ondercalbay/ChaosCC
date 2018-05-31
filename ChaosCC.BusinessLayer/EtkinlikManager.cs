@@ -11,9 +11,11 @@ namespace ChaosCC.BusinessLayer
     public class EtkinlikManager : IEtkinlikManager
     {
         private IEtkinlikDal _dal { get; set; }
-        public EtkinlikManager(IEtkinlikDal dal)
+        private IKullaniciDal _dalKullanici { get; set; }
+        public EtkinlikManager(IEtkinlikDal dal, IKullaniciDal dalKullanici)
         {
             _dal = dal;
+            _dalKullanici = dalKullanici;
         }
         public EtkinlikEditDto Add(EtkinlikEditDto editDto)
         {
@@ -28,7 +30,7 @@ namespace ChaosCC.BusinessLayer
 
         public void Delete(int id)
         {
-            _dal.Delete(id);
+            _dal.DevamsizlikDelete(id);
         }
 
         public List<EtkinlikListDto> Get(Etkinlik filter)
@@ -52,14 +54,41 @@ namespace ChaosCC.BusinessLayer
             return Mapper.Map<EtkinlikEditDto>(_dal.Update(ent));
         }
 
-        public List<DevamsizlikListDto> GetDevamsizlik(int etkinlikId)
+        public DevamsizlikGridDto GetDevamsizlik(int etkinlikId)
         {
+            DevamsizlikGridDto result = new DevamsizlikGridDto();
+            result.Etkinlik = Mapper.Map<EtkinlikEditDto>(_dal.Get(etkinlikId));
+            if (result.Etkinlik == null)
+                throw new Exception("Etkinlik bulunamadı.");
 
-            List<DevamsizlikListDto> ent = _dal.GetDevamsizlikWithEtkinlikId(etkinlikId);
 
-            List<DevamsizlikListDto> result = new List<DevamsizlikListDto>();
+            result.Grid = _dal.GetDevamsizlikWithEtkinlikId(etkinlikId);
 
-            return ent;
+            //Eğer listeye kullanıcı eklenmediyse tüm kullanıcıları ekle ve tekrar çek
+            if (result.Grid.Count == 0)
+            {
+                var kullanicilar = _dalKullanici.Get(new Kullanici() { Aktif = true });
+                foreach (var item in kullanicilar)
+                {
+                    Devamsizlik devamsizlik = new Devamsizlik()
+                    {
+                        KullaniciId = item.Id,
+                        EtkinlikId = etkinlikId,
+                        Geldi = true,
+                        EkleyenId = 1,
+                        EklemeZamani = DateTime.Now,
+                        GuncelleyenId = 1,
+                        GuncellemeZamani = DateTime.Now,
+                        Aktif = true
+                    };
+                    _dal.AddDevamsizlik(devamsizlik);
+                }
+                result.Grid = _dal.GetDevamsizlikWithEtkinlikId(etkinlikId);
+
+                
+            }
+            
+            return result;
         }
 
         public void SaveDevamsizlik(DevamsizlikGridDto devamsizlikDto)
@@ -81,7 +110,7 @@ namespace ChaosCC.BusinessLayer
                 ent.Aktif = true;
                 if (item.Id == 0)
                 {
-                    
+
                     item.Id = _dal.AddDevamsizlik(ent).Id;
                 }
                 else
@@ -90,6 +119,16 @@ namespace ChaosCC.BusinessLayer
                     _dal.UpdateDevamsizlik(ent);
                 }
             }
+        }
+
+        public void DevamsizlikDelete(int id)
+        {
+            _dal.DevamsizlikDelete(id);
+        }
+
+        public List<KullaniciEditDto> GetKullaniciWitOutEtkinlik(int id)
+        {
+            return _dal.GetKullaniciWitOutEtkinlik(id);
         }
     }
 }

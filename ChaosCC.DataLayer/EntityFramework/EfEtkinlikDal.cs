@@ -4,8 +4,6 @@ using ChaosCC.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChaosCC.DataLayer.EntityFramework
 {
@@ -48,20 +46,37 @@ namespace ChaosCC.DataLayer.EntityFramework
 
         public List<DevamsizlikListDto> GetDevamsizlikWithEtkinlikId(int etkinlikId)
         {
-            var query = from k in _context.Kullanicilar
-                        join d in _context.Devamsizliklar on k.Id equals d.KullaniciId into listDevamsizliklar
-                        from ld in listDevamsizliklar.DefaultIfEmpty()
-                        join e in _context.Etkinlikler on ld.EtkinlikId equals e.Id into listetkinlikler
-                        from le in listetkinlikler.DefaultIfEmpty()                        
-                        orderby k.KullaniciAdi
-                        select new DevamsizlikListDto
-                        {
-                            Id = ld.Id != null ? (int)ld.Id : 0,                            
-                            KullaniciId = k.Id,
-                            KullaniciAdi = k.KullaniciAdi,
-                            Geldi = ld.Geldi != null ? ld.Geldi : true,
-                            Aciklama = ld.Aciklama
-                        };
+
+
+            var query = _context.Devamsizliklar
+                .Where(t => t.EtkinlikId == etkinlikId && t.Aktif == true).
+                Select(t => new DevamsizlikListDto
+                {
+                    Id = t.Id,
+                    KullaniciId = t.KullaniciId,
+                    KullaniciAdi = t.Kullanici.KullaniciAdi,
+                    Geldi = t.Geldi,
+                    Aciklama = t.Aciklama
+                })
+                .OrderBy(t => t.KullaniciAdi);
+
+
+
+
+            //var query = from k in _context.Kullanicilar
+            //            join d in _context.Devamsizliklar on k.Id equals d.KullaniciId into listDevamsizliklar
+            //            from ld in listDevamsizliklar.DefaultIfEmpty()
+            //            join e in _context.Etkinlikler on ld.EtkinlikId equals e.Id into listetkinlikler
+            //            from le in listetkinlikler.DefaultIfEmpty()
+            //            orderby k.KullaniciAdi
+            //            select new DevamsizlikListDto
+            //            {
+            //                Id = ld.Id != null ? (int)ld.Id : 0,
+            //                KullaniciId = k.Id,
+            //                KullaniciAdi = k.KullaniciAdi,
+            //                Geldi = ld.Geldi != null ? ld.Geldi : true,
+            //                Aciklama = ld.Aciklama
+            //            };
 
             //_context.Database.SqlQuery()
             //return _context.Etkinlikler.Join<.Where(t =>
@@ -71,7 +86,7 @@ namespace ChaosCC.DataLayer.EntityFramework
             return query.ToList();
         }
 
-       
+
 
         public Etkinlik Update(Etkinlik ent)
         {
@@ -92,7 +107,7 @@ namespace ChaosCC.DataLayer.EntityFramework
             return _context.Devamsizliklar.Where(t =>
              (filter.Id == 0 || t.Id == filter.Id) &&
              (filter.EtkinlikId == 0 || t.EtkinlikId == filter.EtkinlikId) &&
-             (filter.KullaniciId == 0 || t.KullaniciId == filter.KullaniciId) &&             
+             (filter.KullaniciId == 0 || t.KullaniciId == filter.KullaniciId) &&
              t.Aktif == true).ToList();
         }
 
@@ -103,7 +118,7 @@ namespace ChaosCC.DataLayer.EntityFramework
 
         public Devamsizlik UpdateDevamsizlik(Devamsizlik ent)
         {
-            Devamsizlik newEnt = GetDevamsizlik(ent.Id);            
+            Devamsizlik newEnt = GetDevamsizlik(ent.Id);
             newEnt.EtkinlikId = ent.EtkinlikId;
             newEnt.KullaniciId = ent.KullaniciId;
             newEnt.Geldi = ent.Geldi;
@@ -116,5 +131,28 @@ namespace ChaosCC.DataLayer.EntityFramework
             return ent;
         }
 
+        public void DevamsizlikDelete(int id)
+        {
+            var ent = GetDevamsizlik(id);
+            ent.Aktif = false;
+            _context.SaveChanges();
+        }
+
+        public List<KullaniciEditDto> GetKullaniciWitOutEtkinlik(int id)
+        {
+            var etkinligeKatilanKullanicilar = _context.Devamsizliklar.Where(t => t.EtkinlikId == id && t.Aktif == true).Select(t => t.KullaniciId);
+
+            return _context.Kullanicilar
+                .Where(k => !etkinligeKatilanKullanicilar.Contains(k.Id) && k.Aktif == true)
+                .Select(t =>
+                new KullaniciEditDto()
+                {
+                    Id = t.Id,
+                    Adi = t.Adi,
+                    Soyadi = t.Soyadi,
+                    KullaniciAdi = t.KullaniciAdi
+                }
+                ).ToList();
+        }
     }
 }

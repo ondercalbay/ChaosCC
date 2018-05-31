@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Autofac.Core;
 using Autofac.Integration.Mvc;
 using ChaosCC.BusinessLayer;
 using ChaosCC.DataLayer.Abstract;
@@ -44,11 +45,21 @@ namespace ChaosCC.UIYonetim
             //    var manager = Activator.CreateInstance("AssemblyName", "TypeName");
             //}
 
-            
+
 
             containerBuilder.RegisterType<KullaniciManager>().As<IKullaniciManager>().WithParameter("dal", new EfKullaniciDal()).InstancePerLifetimeScope();
             containerBuilder.RegisterType<DuyuruManager>().As<IDuyuruManager>().WithParameter("dal", new EfDuyuruDal()).InstancePerLifetimeScope();
-            containerBuilder.RegisterType<EtkinlikManager>().As<IEtkinlikManager>().WithParameter("dal", new EfEtkinlikDal()).InstancePerLifetimeScope();
+
+            List<Parameter> prms = new List<Parameter>();
+            prms.Add(new NamedParameter("dal", new EfEtkinlikDal()));
+            prms.Add(new NamedParameter("dalKullanici", new EfKullaniciDal()));
+
+            containerBuilder.RegisterType<EtkinlikManager>().As<IEtkinlikManager>().WithParameters(prms).InstancePerLifetimeScope();
+
+
+
+            //containerBuilder.RegisterType<EtkinlikManager>().As<IEtkinlikManager>().WithParameter("dal", new EfEtkinlikDal()).InstancePerLifetimeScope();
+            
             //containerBuilder.RegisterType<IKullaniciDal>().As<EfKullaniciDal>().InstancePerLifetimeScope();
 
             //containerBuilder.RegisterWebApiFilterProvider(GlobalConfiguration.Configuration);
@@ -59,5 +70,7 @@ namespace ChaosCC.UIYonetim
             //GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
+
+
     }
 }

@@ -10,5 +10,9 @@ namespace ChaosCC.DataLayer.Abstract
         Devamsizlik AddDevamsizlik(Devamsizlik ent);
 
         Devamsizlik UpdateDevamsizlik(Devamsizlik ent);
+
+        void DevamsizlikDelete(int id);
+
+        List<KullaniciEditDto> GetKullaniciWitOutEtkinlik(int id);
     }
 }

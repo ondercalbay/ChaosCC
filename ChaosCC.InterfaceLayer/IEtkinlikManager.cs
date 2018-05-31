@@ -6,7 +6,9 @@ namespace ChaosCC.InterfaceLayer
 {
     public interface IEtkinlikManager : IGenericManager<Etkinlik, EtkinlikListDto, EtkinlikEditDto>
     {
-        List<DevamsizlikListDto> GetDevamsizlik(int etkinlikId);
+        DevamsizlikGridDto GetDevamsizlik(int etkinlikId);
         void SaveDevamsizlik(DevamsizlikGridDto model);
+        void DevamsizlikDelete(int id);
+        List<KullaniciEditDto> GetKullaniciWitOutEtkinlik(int id);
     }
 }

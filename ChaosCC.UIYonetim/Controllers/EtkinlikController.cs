@@ -68,12 +68,8 @@ namespace ChaosCC.UIYonetim.Controllers
         [HttpGet]
         public ActionResult Devamsizlik(int id)
         {
-            DevamsizlikGridDto dto = new DevamsizlikGridDto();
-            dto.Id = id;
-            
-            dto.Etkinlik = _service.Get(id);
-            dto.Grid = _service.GetDevamsizlik(id);            
-            return View(dto);
+            ViewBag.Kullanicilar = _service.GetKullaniciWitOutEtkinlik(id);
+            return View(_service.GetDevamsizlik(id));
         }
 
         [HttpPost]
@@ -84,6 +80,30 @@ namespace ChaosCC.UIYonetim.Controllers
 
             return RedirectToAction("");
         }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult DevamsizlikDelete(int id, int etkinlikId)
+        {
+            _service.DevamsizlikDelete(id);
+            return RedirectToAction("Devamsizlik", new { id = etkinlikId });
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult DevamsizlikKullaniciEkle(int id, int etkinlikId)
+        {
+            DevamsizlikGridDto dto = new DevamsizlikGridDto();
+            dto.Etkinlik = new EtkinlikEditDto();
+            dto.Id = etkinlikId;
+            dto.Grid = new List<DevamsizlikListDto>();
+            dto.Grid.Add(new DevamsizlikListDto() { KullaniciId = id, Geldi = true });
+            _service.SaveDevamsizlik(dto);
+            return RedirectToAction("Devamsizlik", new { id = etkinlikId });
+        }
+
+
+
 
 
     }

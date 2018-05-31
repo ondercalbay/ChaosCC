@@ -26,6 +26,7 @@
     //$('.datepicker').removeAttr("data-val-date");
 
     $('textarea#Yazi').froalaEditor();
+    $('textarea#Aciklama').froalaEditor();
     
     jQuery.validator.methods["date"] = function (value, element) { return true; }
 

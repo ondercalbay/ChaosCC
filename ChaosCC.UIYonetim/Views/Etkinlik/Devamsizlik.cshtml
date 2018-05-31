@@ -3,20 +3,28 @@
     ViewBag.Title = "Devamsızlık";
 }
 
+<script>
+    function Sil(id, etkinlikId) {
+        if (confirm('Çıkarmak istediğinize emin misiniz?')) {
+            window.location = "/Etkinlik/DevamsizlikDelete/" + id + "?etkinlikId=" + etkinlikId;
+        }
+    }
+</script>
+
 @using (Html.BeginForm("Devamsizlik", "Etkinlik", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
-<div class="jumbotron">
-    <h2>@Html.DisplayFor(model => model.Etkinlik.EtlinlikTuru) - @Html.DisplayFor(model => model.Etkinlik.Yer)</h2>
-    <h5>@Html.DisplayFor(model => model.Etkinlik.Tarih)</h5>
-    <p class="lead">
-        @Html.DisplayFor(model => model.Etkinlik.Aciklama)
-    </p>
-</div>
+    <div class="jumbotron">
+        <h2>@Html.DisplayFor(model => model.Etkinlik.EtlinlikTuru) - @Html.DisplayFor(model => model.Etkinlik.Yer)</h2>
+        <h5>@Html.DisplayFor(model => model.Etkinlik.Tarih)</h5>
+        <p class="lead">
+            @Html.DisplayFor(model => model.Etkinlik.Aciklama)
+        </p>
+    </div>
 
     @Html.HiddenFor(model => model.Id)
-    
+
     <table class="table table-striped">
         <tr>
             <th>Sıra</th>
@@ -28,6 +36,9 @@
             </th>
             <th>
                 Açıklama
+            </th>
+            <th>
+                İşlem
             </th>
         </tr>
 
@@ -48,11 +59,49 @@
                 <td>
                     @Html.TextBoxFor(m => Model.Grid[i].Aciklama)
                 </td>
+                <td>
+                    <a class="btn btn-sm btn-outline-danger" href=@($"javascript:Sil({Model.Grid[i].Id},{Model.Etkinlik.Id});" )><i class="fas fa-trash"></i></a>
+                </td>
             </tr>
         }
 
     </table>
 
+    if (ViewBag.Kullanicilar.Count>0)
+    {
+
+    
+    <h3>Etkinlik Dışı Kullanıcılar</h3>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Sıra</th>
+            <th>
+                Kullanıcı Adı
+            </th>
+            <th>
+                İşlem
+            </th>
+        </tr>
+
+        @for (int i = 0; i < ViewBag.Kullanicilar.Count; i++)
+        {
+            ChaosCC.Dto.KullaniciEditDto kullanici = ViewBag.Kullanicilar[i];
+            <tr>
+                <th class="text-right">@(i + 1)</th>
+                <td>
+                    @Html.DisplayFor(m => kullanici.KullaniciAdi, new { @class = "form-control" })
+
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-outline-primary" href=@("/Etkinlik/DevamsizlikKullaniciEkle/"+kullanici.Id+"?etkinlikId="+Model.Etkinlik.Id)><i class="fas fa-plus"></i></a>
+                </td>
+            </tr>
+        }
+
+    </table>
+    }
+    <hr />
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Kaydet" class="btn btn-outline-success" />
