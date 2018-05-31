@@ -15,11 +15,17 @@
 
 <h2>@ViewBag.Title</h2>
 <hr />
-<p>    
+<p>
     <a class="btn btn-primary" href=@("/Kullanicilar/Edit/")><i class="glyphicon glyphicon-plus"></i> Yeni</a>
 </p>
 <table class="table table-striped">
     <tr>
+        <th>
+            Sıra
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KullaniciAdi)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Adi)
         </th>
@@ -28,21 +34,30 @@
         </th>
         <th>İşlem</th>
     </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Adi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Soyadi)
-            </td>
-            <td>
-                <a class="btn btn-sm btn-outline-primary" href=@("/Kullanicilar/Edit/"+item.Id)><i class="fas fa-pencil-alt"></i></a>
-                <a class="btn btn-sm btn-outline-danger" href=@($"javascript:Sil({item.Id});" )><i class="fas fa-trash"></i></a>
-            </td>
-        </tr>
+    @{
+        int i = 0;
+        foreach (var item in Model)
+        {
+            i += 1;
+            <tr>
+                <td>
+                    @i
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KullaniciAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Soyadi)
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-outline-primary" href=@("/Kullanicilar/Edit/"+item.Id)><i class="fas fa-pencil-alt"></i></a>
+                    <a class="btn btn-sm btn-outline-danger" href=@($"javascript:Sil({item.Id});" )><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+        }
     }
 
 </table>

@@ -40,7 +40,7 @@ namespace ChaosCC.DataLayer.EntityFramework
                         (search.Sifre == null || k.Sifre == search.Sifre) &&
                         k.Aktif == true
                 )
-                .OrderByDescending(k => k.EklemeZamani).ToList();
+                .OrderBy(k => k.KullaniciAdi).ToList();
 
             return kullanicilarDto;
         }

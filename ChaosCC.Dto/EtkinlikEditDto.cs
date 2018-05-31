@@ -12,6 +12,7 @@ namespace ChaosCC.Dto
         public string Yer { get; set; }
 
         [Required]
+        [Display(Name = "Etkinlik Türü")]
         public EnuEtkinlikTuru EtlinlikTuru { get; set; }
 
         [Required]
@@ -20,6 +21,7 @@ namespace ChaosCC.Dto
         public DateTime Tarih { get; set; }
 
         [MaxLength(4000)]
+        [Display(Name = "Açıklama")]
         public string Aciklama { get; set; }
     }
 }

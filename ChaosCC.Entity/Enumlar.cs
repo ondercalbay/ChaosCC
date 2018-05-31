@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,7 +36,9 @@ namespace ChaosCC.Entity
 
         public enum EnuEtkinlikTuru
         {
+            [Display(Name = "Cuma Toplantısı")]
             CumaToplantisi = 1,
+            [Display(Name = "Önemli Gün")]
             OnemliGun = 2            
         }
     }

@@ -14,6 +14,7 @@ namespace ChaosCC.Dto
 
         public string Yer { get; set; }
 
+        [Display(Name = "Etkinlik Türü")]
         public EnuEtkinlikTuru EtlinlikTuru { get; set; }
 
         public DateTime Tarih { get; set; }        

@@ -714,6 +714,10 @@
       <Project>{efd26dc6-e7f2-4732-aaeb-a7a60388f1e0}</Project>
       <Name>ChaosCC.InterfaceLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CommonLibrary\CommonLibrary.csproj">
+      <Project>{cb299566-2d44-41e0-90c8-f9e7a8e791e6}</Project>
+      <Name>CommonLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
