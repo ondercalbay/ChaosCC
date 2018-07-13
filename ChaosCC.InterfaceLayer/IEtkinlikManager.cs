@@ -10,5 +10,6 @@ namespace ChaosCC.InterfaceLayer
         void SaveDevamsizlik(DevamsizlikGridDto model);
         void DevamsizlikDelete(int id);
         List<KullaniciEditDto> GetKullaniciWitOutEtkinlik(int id);
+        List<KullaniciDevamsizlikDto> GetKullaniciDevamsizlik(int kulleniciId);
     }
 }

@@ -18,10 +18,17 @@ namespace ChaosCC.DataLayer.EntityFramework
             return ent;
         }
 
-        public Devamsizlik AddDevamsizlik(Devamsizlik ent)
+        public Etkinlik Update(Etkinlik ent)
         {
-            _context.Devamsizliklar.Add(ent);
+            Etkinlik newEnt = Get(ent.Id);
+            newEnt.Aciklama = ent.Aciklama;
+            newEnt.EtlinlikTuru = ent.EtlinlikTuru;
+            newEnt.Tarih = ent.Tarih;
+            newEnt.Yer = ent.Yer;
+            newEnt.GuncelleyenId = ent.GuncelleyenId;
+            newEnt.GuncellemeZamani = DateTime.Now;
             _context.SaveChanges();
+
             return ent;
         }
 
@@ -35,16 +42,23 @@ namespace ChaosCC.DataLayer.EntityFramework
         public List<Etkinlik> Get(Etkinlik filter)
         {
             return _context.Etkinlikler
-                .Where(t =>                
+                .Where(t =>
                         (filter.Id == 0 || t.Id == filter.Id) &&
                         t.Aktif == true
                     )
-                .OrderByDescending(t=> t.Tarih).ToList();
+                .OrderByDescending(t => t.Tarih).ToList();
         }
 
         public Etkinlik Get(int id)
         {
-            return Get(new Etkinlik { Id = id }).FirstOrDefault();
+            return _context.Etkinlikler.Where(k => k.Id == id && k.Aktif == true).FirstOrDefault();
+        }
+
+        public Devamsizlik AddDevamsizlik(Devamsizlik ent)
+        {
+            _context.Devamsizliklar.Add(ent);
+            _context.SaveChanges();
+            return ent;
         }
 
         public List<DevamsizlikListDto> GetDevamsizlikWithEtkinlikId(int etkinlikId)
@@ -62,9 +76,6 @@ namespace ChaosCC.DataLayer.EntityFramework
                     Aciklama = t.Aciklama
                 })
                 .OrderBy(t => t.KullaniciAdi);
-
-
-
 
             //var query = from k in _context.Kullanicilar
             //            join d in _context.Devamsizliklar on k.Id equals d.KullaniciId into listDevamsizliklar
@@ -91,19 +102,7 @@ namespace ChaosCC.DataLayer.EntityFramework
 
 
 
-        public Etkinlik Update(Etkinlik ent)
-        {
-            Etkinlik newEnt = Get(ent.Id);
-            newEnt.Aciklama = ent.Aciklama;
-            newEnt.EtlinlikTuru = ent.EtlinlikTuru;
-            newEnt.Tarih = ent.Tarih;
-            newEnt.Yer = ent.Yer;
-            newEnt.GuncelleyenId = ent.GuncelleyenId;
-            newEnt.GuncellemeZamani = DateTime.Now;
-            _context.SaveChanges();
 
-            return ent;
-        }
 
         public List<Devamsizlik> GetDevamsizlik(Devamsizlik filter)
         {
@@ -116,7 +115,7 @@ namespace ChaosCC.DataLayer.EntityFramework
 
         public Devamsizlik GetDevamsizlik(int id)
         {
-            return GetDevamsizlik(new Devamsizlik { Id = id }).FirstOrDefault();
+            return _context.Devamsizliklar.Where(k => k.Id == id && k.Aktif == true).FirstOrDefault();
         }
 
         public Devamsizlik UpdateDevamsizlik(Devamsizlik ent)
@@ -156,6 +155,24 @@ namespace ChaosCC.DataLayer.EntityFramework
                     KullaniciAdi = t.KullaniciAdi
                 }
                 ).ToList();
+        }
+
+        public List<KullaniciDevamsizlikDto> GetKullaniciDevamsizlik(int kullaniciId)
+        {
+            var query = _context.Devamsizliklar
+              .Where(t => t.KullaniciId == kullaniciId && t.Aktif == true && t.Etkinlik.Aktif == true).
+              Select(t => new KullaniciDevamsizlikDto
+              {
+                  DevamsizlikAciklama = t.Aciklama,
+                  EtkinlikId = t.EtkinlikId,
+                  EtkinlikAdi = t.Etkinlik.Yer,
+                  EtkinlikTuru = t.Etkinlik.EtlinlikTuru,
+                  EtkinlikTarihi = t.Etkinlik.Tarih,
+                  EtkinlikAciklama = t.Etkinlik.Aciklama,
+                  Geldi = t.Geldi
+              })
+              .OrderBy(t => t.EtkinlikTarihi);
+            return query.ToList();
         }
     }
 }

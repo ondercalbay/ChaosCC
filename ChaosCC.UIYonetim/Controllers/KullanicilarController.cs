@@ -4,6 +4,7 @@ using ChaosCC.Dto;
 using ChaosCC.Entity;
 using ChaosCC.InterfaceLayer;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -13,6 +14,7 @@ namespace ChaosCC.UIYonetim.Controllers
     public class KullanicilarController : Controller
     {
         private readonly IKullaniciManager _servis = new KullaniciManager(new EfKullaniciDal());
+        private readonly IEtkinlikManager _servisEtkinlik = new EtkinlikManager(new EfEtkinlikDal(), new EfKullaniciDal());
 
         public KullanicilarController(IKullaniciManager kullaniciServis)
         {
@@ -123,6 +125,19 @@ namespace ChaosCC.UIYonetim.Controllers
             _servis.Delete(id);
             return RedirectToAction("");
 
+        }
+
+        [Authorize]
+        public ActionResult Devamsizlik(int id)
+        {
+            KullaniciEditDto kullaniciDto = new KullaniciEditDto();
+            ViewBag.Kullanici = _servis.Get(id).KullaniciAdi;
+            
+            List<KullaniciDevamsizlikDto> devamsizlikDto = _servisEtkinlik.GetKullaniciDevamsizlik(id);
+            kullaniciDto.SifreTekrar = kullaniciDto.Sifre;
+
+
+            return View(devamsizlikDto);
         }
     }
 }

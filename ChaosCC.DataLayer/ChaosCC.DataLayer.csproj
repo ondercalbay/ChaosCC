@@ -87,6 +87,10 @@
       <Project>{642057D1-CAB5-46EA-AC8B-38095A27461F}</Project>
       <Name>ChaosCC.Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CommonLibrary\CommonLibrary.csproj">
+      <Project>{cb299566-2d44-41e0-90c8-f9e7a8e791e6}</Project>
+      <Name>CommonLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201707111111434_baslangic.resx">

@@ -130,5 +130,10 @@ namespace ChaosCC.BusinessLayer
         {
             return _dal.GetKullaniciWitOutEtkinlik(id);
         }
+
+        public List<KullaniciDevamsizlikDto> GetKullaniciDevamsizlik(int kullaniciId)
+        {
+            return _dal.GetKullaniciDevamsizlik(kullaniciId);
+        }
     }
 }

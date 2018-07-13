@@ -59,7 +59,7 @@ namespace ChaosCC.DataLayer.EntityFramework
 
         public Duyuru Get(int id)
         {
-            return Get(new Duyuru { Id = id }).FirstOrDefault();
+            return _context.Duyurular.Where(k => k.Id == id && k.Aktif == true).FirstOrDefault();
         }
 
         public Duyuru Update(Duyuru ent)

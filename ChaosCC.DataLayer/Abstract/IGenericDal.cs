@@ -7,7 +7,7 @@ namespace ChaosCC.DataLayer.Abstract
         Entity Add(Entity ent);
 
         Entity Update(Entity ent);
-                
+
         List<Entity> Get(Entity filter);
 
         Entity Get(int id);

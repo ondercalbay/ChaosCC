@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 using static ChaosCC.Entity.Enumlar;
 
 namespace ChaosCC.Dto
@@ -21,7 +22,7 @@ namespace ChaosCC.Dto
         public DateTime Tarih { get; set; }
 
         [MaxLength(4000)]
-        [Display(Name = "Açıklama")]
+        [Display(Name = "Açıklama")]        
         public string Aciklama { get; set; }
     }
 }
