@@ -31,21 +31,30 @@ namespace ChaosCC.BusinessLayer
                 //cfg.CreateMap<List<KullaniciListDto>, List<Kullanici>>();
                 cfg.CreateMap<Kullanici, KullaniciListDto>();
                 cfg.CreateMap<KullaniciListDto, Kullanici>();
+
                 cfg.CreateMap<Kullanici, KullaniciEditDto>();
                 cfg.CreateMap<KullaniciEditDto, Kullanici>();
 
                 cfg.CreateMap<Kullanici, KullaniciLoginDto>();
                 cfg.CreateMap<KullaniciLoginDto, Kullanici>();
+
                 cfg.CreateMap<Kullanici, KullaniciLoginDto>();
                 cfg.CreateMap<KullaniciLoginDto, Kullanici>();
+                
+                cfg.CreateMap<Kullanici, KullaniciSessionDto>();
+                cfg.CreateMap<KullaniciSessionDto, Kullanici>();
+
+
 
                 cfg.CreateMap<Duyuru, DuyuruListDto>();
                 cfg.CreateMap<DuyuruListDto, Duyuru>();
+
                 cfg.CreateMap<Duyuru, DuyuruEditDto>();
                 cfg.CreateMap<DuyuruEditDto, Duyuru>();
 
                 cfg.CreateMap<Etkinlik, EtkinlikListDto>();
                 cfg.CreateMap<EtkinlikListDto, Etkinlik>();
+
                 cfg.CreateMap<Etkinlik, EtkinlikEditDto>();
                 cfg.CreateMap<EtkinlikEditDto, Etkinlik>();
             }

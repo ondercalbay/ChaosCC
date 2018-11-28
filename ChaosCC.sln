@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChaosCC.Dto", "ChaosCC.Dto\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChaosCC.UIYonetim", "ChaosCC.UIYonetim\ChaosCC.UIYonetim.csproj", "{86A69386-8441-4935-BCC8-E21F5F05D56F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonLibrary", "CommonLibrary\CommonLibrary.csproj", "{CB299566-2D44-41E0-90C8-F9E7A8E791E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChaosCC.CommonLibrary", "ChaosCC.CommonLibrary\ChaosCC.CommonLibrary.csproj", "{6E9943C0-23D1-45BC-B271-2069707D14A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +47,10 @@ Global
 		{86A69386-8441-4935-BCC8-E21F5F05D56F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86A69386-8441-4935-BCC8-E21F5F05D56F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86A69386-8441-4935-BCC8-E21F5F05D56F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CB299566-2D44-41E0-90C8-F9E7A8E791E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CB299566-2D44-41E0-90C8-F9E7A8E791E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CB299566-2D44-41E0-90C8-F9E7A8E791E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CB299566-2D44-41E0-90C8-F9E7A8E791E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E9943C0-23D1-45BC-B271-2069707D14A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E9943C0-23D1-45BC-B271-2069707D14A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E9943C0-23D1-45BC-B271-2069707D14A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E9943C0-23D1-45BC-B271-2069707D14A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

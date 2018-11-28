@@ -1,4 +1,5 @@
-﻿@model ChaosCC.Dto.DevamsizlikGridDto
+﻿@using ChaosCC.UIYonetim.Helpers
+@model ChaosCC.Dto.DevamsizlikGridDto
 @{
     ViewBag.Title = "Devamsızlık";
 }
@@ -60,51 +61,60 @@
                     @Html.TextBoxFor(m => Model.Grid[i].Aciklama)
                 </td>
                 <td class="text-right">
-                    <a class="btn btn-sm btn-outline-danger" href=@($"javascript:Sil({Model.Grid[i].Id},{Model.Etkinlik.Id});" )><i class="fas fa-trash"></i></a>
+                    @if (UserHelper.Kullanici.RolAdi.ToLower().Equals("admin"))
+                    {
+                        <a class="btn btn-sm btn-outline-danger" href=@($"javascript:Sil({Model.Grid[i].Id},{Model.Etkinlik.Id});" )><i class="fas fa-trash"></i></a>
+                    }
                 </td>
             </tr>
         }
 
     </table>
 
-    if (ViewBag.Kullanicilar.Count>0)
+    if (ViewBag.Kullanicilar.Count > 0)
     {
 
-    
-    <h3>Etkinlik Dışı Kullanıcılar</h3>
 
-    <table class="table table-striped">
-        <tr>
-            <th>Sıra</th>
-            <th>
-                Kullanıcı Adı
-            </th>
-            <th>
-                İşlem
-            </th>
-        </tr>
+        <h3>Etkinlik Dışı Kullanıcılar</h3>
 
-        @for (int i = 0; i < ViewBag.Kullanicilar.Count; i++)
-        {
-            ChaosCC.Dto.KullaniciEditDto kullanici = ViewBag.Kullanicilar[i];
+        <table class="table table-striped">
             <tr>
-                <th class="text-right">@(i + 1)</th>
-                <td>
-                    @Html.DisplayFor(m => kullanici.KullaniciAdi, new { @class = "form-control" })
-
-                </td>
-                <td>
-                    <a class="btn btn-sm btn-outline-primary" href=@("/Etkinlik/DevamsizlikKullaniciEkle/"+kullanici.Id+"?etkinlikId="+Model.Etkinlik.Id)><i class="fas fa-plus"></i></a>
-                </td>
+                <th>Sıra</th>
+                <th>
+                    Kullanıcı Adı
+                </th>
+                <th>
+                    İşlem
+                </th>
             </tr>
-        }
 
-    </table>
+            @for (int i = 0; i < ViewBag.Kullanicilar.Count; i++)
+            {
+                ChaosCC.Dto.KullaniciEditDto kullanici = ViewBag.Kullanicilar[i];
+                <tr>
+                    <th class="text-right">@(i + 1)</th>
+                    <td>
+                        @Html.DisplayFor(m => kullanici.KullaniciAdi, new { @class = "form-control" })
+
+                    </td>
+                    <td>
+                        @if (UserHelper.Kullanici.RolAdi.ToLower().Equals("admin"))
+                        {
+                            <a class="btn btn-sm btn-outline-primary" href=@("/Etkinlik/DevamsizlikKullaniciEkle/" + kullanici.Id + "?etkinlikId=" + Model.Etkinlik.Id)><i class="fas fa-plus"></i></a>
+                        }
+                        </td>
+                </tr>
+            }
+
+        </table>
     }
     <hr />
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Kaydet" class="btn btn-outline-success" />
+            @if (UserHelper.Kullanici.RolAdi.ToLower().Equals("admin"))
+            {
+                <input type="submit" value="Kaydet" class="btn btn-outline-success" />
+            }
             <a href="../Index" class="btn btn-outline-danger">Listeye Geri Dön</a>
         </div>
     </div>

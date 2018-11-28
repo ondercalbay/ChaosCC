@@ -5,6 +5,6 @@ namespace ChaosCC.InterfaceLayer
 {
     public interface IKullaniciManager : IGenericManager<Kullanici, KullaniciListDto, KullaniciEditDto>
     {
-        KullaniciEditDto Authenticate(KullaniciLoginDto kullanici);
-    }
+        KullaniciSessionDto Authenticate(KullaniciLoginDto kullanici);
+     }
 }

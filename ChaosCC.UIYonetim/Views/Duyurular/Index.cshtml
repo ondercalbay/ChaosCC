@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ChaosCC.Dto.DuyuruListDto>
+﻿@using ChaosCC.UIYonetim.Helpers
+@model IEnumerable<ChaosCC.Dto.DuyuruListDto>
 
 @{
     ViewBag.Title = "Duyurular";
@@ -15,40 +16,26 @@
 
 <h2>@ViewBag.Title</h2>
 <hr />
-<p>
-    <a class="btn btn-primary" href=@("/Duyurular/Edit/")><i class="glyphicon glyphicon-plus"></i> Yeni</a>
-</p>
-<table class="table table-striped">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Tarih)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DuyuruTipi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Baslik)
-        </th>
-        <th class="text-center">İşlem</th>
-    </tr>
+@if (UserHelper.Kullanici.RolAdi.ToLower().Equals("admin"))
+{
+    <p>
+        <a class="btn btn-primary" href=@("/Duyurular/Edit/")><i class="glyphicon glyphicon-plus"></i> Yeni</a>
+    </p>
+}
+@foreach (var item in Model)
+{
+    <div class="blog-post">
+        <h2 class="blog-post-title">@item.Baslik</h2>
+        <p class="blog-post-meta">@item.Tarih.ToString("dd.MMM.yyyy") <a href="#">@item.DuyuruTipi.ToString()</a></p>
+        <p>
+            @Html.Raw(item.Yazi)
+        </p>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @item.Tarih.ToString("dd.MM.yyyy")
-            </td>
-            <td>
-                @item.DuyuruTipi.ToString()
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Baslik)
-            </td>
-            <td class="text-center">
-                <a class="btn btn-sm btn-outline-primary" href=@("/Duyurular/Edit/"+item.Id)><i class="fas fa-pencil-alt"></i></a>
-                <a class="btn btn-sm btn-outline-danger" href=@($"javascript:Sil({item.Id});" )><i class="fas fa-trash"></i></a>
-            </td>
-        </tr>
-    }
-
-</table>
+        @if (UserHelper.Kullanici.RolAdi.ToLower().Equals("admin"))
+        {
+            <a class="btn btn-sm btn-outline-primary" href=@("/Duyurular/Edit/"+item.Id)><i class="fas fa-pencil-alt"></i></a>
+            <a class="btn btn-sm btn-outline-danger" href=@($"javascript:Sil({item.Id});" )><i class="fas fa-trash"></i></a>
+        }
+        <hr />
+    </div>
+}

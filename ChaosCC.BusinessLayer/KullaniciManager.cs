@@ -75,18 +75,29 @@ namespace ChaosCC.BusinessLayer
             return Mapper.Map<KullaniciEditDto>(_dal.Update(ent));
         }
 
-        public KullaniciEditDto Authenticate(KullaniciLoginDto kullaniciLoginDto)
+        public KullaniciSessionDto Authenticate(KullaniciLoginDto kullaniciLoginDto)
         {
             Kullanici ent = Mapper.Map<Kullanici>(kullaniciLoginDto);
-            List<Kullanici> kul = _dal.Get(ent);
-            if (kul.Count == 0)
+            Kullanici kul = _dal.Get(ent).FirstOrDefault();
+            if (kul == null)
             {
                 return null;
             }
             else
             {
-                return Mapper.Map<KullaniciEditDto>(kul[0]);
+                KullaniciSessionDto result = Mapper.Map<KullaniciSessionDto>(kul);
+                if (kul.KullaniciAdi.ToLower().Equals("çalbay"))
+                {
+                    result.RolAdi = "admin";
+                }
+                else
+                {
+                    result.RolAdi = "izleyici";
+                }
+                
+                return Mapper.Map<KullaniciSessionDto>(result);
             }
+
 
         }
 

@@ -3,6 +3,7 @@ using ChaosCC.DataLayer.EntityFramework;
 using ChaosCC.Dto;
 using ChaosCC.Entity;
 using ChaosCC.InterfaceLayer;
+using ChaosCC.UIYonetim.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -32,15 +33,15 @@ namespace ChaosCC.UIYonetim.Controllers
         {
             if (ModelState.IsValid)
             {
-                KullaniciEditDto kullaniciAuth = _servis.Authenticate(kullanici);
+                KullaniciSessionDto kullaniciAuth = _servis.Authenticate(kullanici);
                 if (kullaniciAuth == null)
                 {
-                    Thread.Sleep(4000);
                     ModelState.AddModelError("Hata", "Kullanıcı adı veya şifresi hatalı.");
                 }
                 else
                 {
-                    FormsAuthentication.SetAuthCookie(kullaniciAuth.KullaniciAdi, false);
+                    UserHelper.AddCookies(kullaniciAuth, false);
+
                     return Redirect(returnUrl ?? "/");
                 }
             }
@@ -132,12 +133,32 @@ namespace ChaosCC.UIYonetim.Controllers
         {
             KullaniciEditDto kullaniciDto = new KullaniciEditDto();
             ViewBag.Kullanici = _servis.Get(id).KullaniciAdi;
-            
+
             List<KullaniciDevamsizlikDto> devamsizlikDto = _servisEtkinlik.GetKullaniciDevamsizlik(id);
             kullaniciDto.SifreTekrar = kullaniciDto.Sifre;
 
 
             return View(devamsizlikDto);
         }
+
+        [Authorize]
+        public ActionResult DevamsizlikList()
+        {
+            List<KullaniciListDto> kullaniciDto = _servis.Get(new Kullanici { Aktif = true });
+
+            List<KullaniciDevamsilikListDto> dto = new List<KullaniciDevamsilikListDto>();
+
+            foreach (var kullanici in kullaniciDto)
+            {
+                KullaniciDevamsilikListDto devamsizlik = new KullaniciDevamsilikListDto();
+                devamsizlik.Kullanici = kullanici;
+                devamsizlik.Devamsizlik = _servisEtkinlik.GetKullaniciDevamsizlik(kullanici.Id);
+                dto.Add(devamsizlik);
+            }
+
+            return View(dto);
+        }
+
+
     }
 }

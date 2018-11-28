@@ -47,8 +47,7 @@ namespace ChaosCC.UIYonetim.Controllers
                 _service.Add(editDto);
             }
             else
-            {
-                _service.Update(editDto);
+            {                _service.Update(editDto);
             }
             return RedirectToAction("");
 

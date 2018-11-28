@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ChaosCC.Dto</RootNamespace>
     <AssemblyName>ChaosCC.Dto</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -68,20 +69,18 @@
     <Compile Include="DuyuruListDto.cs" />
     <Compile Include="EtkinlikEditDto.cs" />
     <Compile Include="EtkinlikListDto.cs" />
+    <Compile Include="KullaniciDevamsilikListDto.cs" />
     <Compile Include="KullaniciDevamsizlikDto.cs" />
     <Compile Include="KullaniciEditDto.cs" />
     <Compile Include="KullaniciListDto.cs" />
     <Compile Include="KullaniciLoginDto.cs" />
+    <Compile Include="KullaniciSessionDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChaosCC.Entity\ChaosCC.Entity.csproj">
       <Project>{642057D1-CAB5-46EA-AC8B-38095A27461F}</Project>
       <Name>ChaosCC.Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CommonLibrary\CommonLibrary.csproj">
-      <Project>{cb299566-2d44-41e0-90c8-f9e7a8e791e6}</Project>
-      <Name>CommonLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

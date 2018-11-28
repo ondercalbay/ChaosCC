@@ -1,4 +1,6 @@
-﻿@model ChaosCC.Dto.EtkinlikEditDto
+﻿@using ChaosCC.UIYonetim.Helpers
+
+@model ChaosCC.Dto.EtkinlikEditDto
 
 @{
     ViewBag.Title = "Etkinlik Detay";
@@ -49,9 +51,12 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Kaydet" class="btn btn-outline-success" />
-            <a href="../Index" class="btn btn-outline-danger">Listeye Geri Dön</a>
-        </div>
+            @if (UserHelper.Kullanici.RolAdi.ToLower().Equals("admin"))
+            {
+                <input type="submit" value="Kaydet" class="btn btn-outline-success" />
+            }
+                <a href="../Index" class="btn btn-outline-danger">Listeye Geri Dön</a>
+            </div>
     </div>
 </div>
 }
