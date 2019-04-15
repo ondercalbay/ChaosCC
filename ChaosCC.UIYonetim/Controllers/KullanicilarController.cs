@@ -134,7 +134,7 @@ namespace ChaosCC.UIYonetim.Controllers
             KullaniciEditDto kullaniciDto = new KullaniciEditDto();
             ViewBag.Kullanici = _servis.Get(id).KullaniciAdi;
 
-            List<KullaniciDevamsizlikDto> devamsizlikDto = _servisEtkinlik.GetKullaniciDevamsizlik(id);
+            List<KullaniciDevamsizlikDto> devamsizlikDto = _servisEtkinlik.GetKullaniciDevamsizlik(id, new DateTime(DateTime.Today.Year, 01, 01), DateTime.Today);
             kullaniciDto.SifreTekrar = kullaniciDto.Sifre;
 
 
@@ -152,7 +152,7 @@ namespace ChaosCC.UIYonetim.Controllers
             {
                 KullaniciDevamsilikListDto devamsizlik = new KullaniciDevamsilikListDto();
                 devamsizlik.Kullanici = kullanici;
-                devamsizlik.Devamsizlik = _servisEtkinlik.GetKullaniciDevamsizlik(kullanici.Id);
+                devamsizlik.Devamsizlik = _servisEtkinlik.GetKullaniciDevamsizlik(kullanici.Id, new DateTime(DateTime.Today.Year, 01, 01), DateTime.Today);
                 dto.Add(devamsizlik);
             }
 

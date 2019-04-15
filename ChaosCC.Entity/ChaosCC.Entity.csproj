@@ -47,7 +47,6 @@
     <Compile Include="Devamsizlik.cs" />
     <Compile Include="Duyuru.cs" />
     <Compile Include="Enumlar.cs" />
-    <Compile Include="EnuRutbeler.cs" />
     <Compile Include="Etkinlik.cs" />
     <Compile Include="Kasa.cs" />
     <Compile Include="KasaHareketleri.cs" />

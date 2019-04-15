@@ -72,6 +72,10 @@
     <Compile Include="Migrations\201803200916357_Etkinlik_Devamsizlik.Designer.cs">
       <DependentUpon>201803200916357_Etkinlik_Devamsizlik.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904151011476_motosiklet.cs" />
+    <Compile Include="Migrations\201904151011476_motosiklet.Designer.cs">
+      <DependentUpon>201904151011476_motosiklet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -101,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803200916357_Etkinlik_Devamsizlik.resx">
       <DependentUpon>201803200916357_Etkinlik_Devamsizlik.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904151011476_motosiklet.resx">
+      <DependentUpon>201904151011476_motosiklet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

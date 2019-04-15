@@ -157,10 +157,14 @@ namespace ChaosCC.DataLayer.EntityFramework
                 ).ToList();
         }
 
-        public List<KullaniciDevamsizlikDto> GetKullaniciDevamsizlik(int kullaniciId)
+        public List<KullaniciDevamsizlikDto> GetKullaniciDevamsizlik(int kullaniciId, DateTime baslangicTarihi, DateTime bitisTarihi)
         {
             var query = _context.Devamsizliklar
-              .Where(t => t.KullaniciId == kullaniciId && t.Aktif == true && t.Etkinlik.Aktif == true).
+              .Where(t => t.KullaniciId == kullaniciId &&
+                        t.Aktif == true &&
+                        t.Etkinlik.Tarih >= baslangicTarihi &&
+                        t.Etkinlik.Tarih < bitisTarihi &&
+                        t.Etkinlik.Aktif == true).
               Select(t => new KullaniciDevamsizlikDto
               {
                   DevamsizlikAciklama = t.Aciklama,

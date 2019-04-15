@@ -1,5 +1,6 @@
 ﻿using ChaosCC.Dto;
 using ChaosCC.Entity;
+using System;
 using System.Collections.Generic;
 
 namespace ChaosCC.DataLayer.Abstract
@@ -15,6 +16,6 @@ namespace ChaosCC.DataLayer.Abstract
 
         List<KullaniciEditDto> GetKullaniciWitOutEtkinlik(int id);
 
-        List<KullaniciDevamsizlikDto> GetKullaniciDevamsizlik(int kullaniniciId);
+        List<KullaniciDevamsizlikDto> GetKullaniciDevamsizlik(int kullaniniciId, DateTime baslangicTarihi, DateTime bitisTarihi);
     }
 }

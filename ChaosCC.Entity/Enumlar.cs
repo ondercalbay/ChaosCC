@@ -39,7 +39,28 @@ namespace ChaosCC.Entity
             [Display(Name = "Cuma Toplantısı")]
             CumaToplantisi = 1,
             [Display(Name = "Önemli Gün")]
-            OnemliGun = 2            
+            OnemliGun = 2,
+            [Display(Name = "Eğitim")]
+            Egitim = 3,
+            [Display(Name = "Sürüş")]
+            Sürüş = 4
+        }
+        public enum EnuRutbeler
+        {
+            HangAround = 1,
+            HangAround1 = 2,
+            HangAround2 = 3,
+            HangAround3 = 4,
+            Prospect = 5,
+            Member = 6,
+            KidemliMember = 7
+        }
+        public enum EnuHareketTuru
+        {
+            [Display(Name = "Cıktı")]
+            Cikti = 0,
+            [Display(Name = "Girdi")]
+            Girdi = 1            
         }
     }
 }

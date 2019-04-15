@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    @Html.ActionLink("AnaSayfa", "Index", "Home",null, new { @class = "nav-link" })
+                    @Html.ActionLink("AnaSayfa", "Index", "Home", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
                     @Html.ActionLink("Kullanıcılar", "Index", "Kullanicilar", null, new { @class = "nav-link" })
@@ -27,8 +27,11 @@
                 <li class="nav-item">
                     @Html.ActionLink("Duyurular", "Index", "Duyurular", null, new { @class = "nav-link" })
                 </li>
-                <li class="nav-item">                    
+                <li class="nav-item">
                     @Html.ActionLink("Etkinlikler", "Index", "Etkinlik", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Devamsızlık Listesi", "DevamsizlikList", "Kullanicilar", null, new { @class = "nav-link" })
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">                

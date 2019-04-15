@@ -7,7 +7,7 @@ namespace ChaosCC.DataLayer.EntityFramework
     {
         public DbSet<Kullanici> Kullanicilar { get; set; }
         public DbSet<Uye> Uyeler { get; set; }
-        public DbSet<KilometreBilgi> KilometreBilgileri { get; set; }
+        //public DbSet<KilometreBilgi> KilometreBilgileri { get; set; }
         public DbSet<Duyuru> Duyurular { get; set; }
         public DbSet<Devamsizlik> Devamsizliklar { get; set; }
         public DbSet<Etkinlik> Etkinlikler { get; set; }

@@ -2,7 +2,7 @@
 
 namespace ChaosCC.DataLayer.Abstract
 {
-    public interface IGenericDal<Entity>
+    public interface IGenericDal<Entity> where Entity:class,new()
     {
         Entity Add(Entity ent);
 
