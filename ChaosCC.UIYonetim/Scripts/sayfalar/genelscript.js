@@ -28,7 +28,7 @@
     $('textarea#Yazi').froalaEditor();
     
     
-    jQuery.validator.methods["date"] = function (value, element) { return true; }
+    jQuery.validator.methods["date"] = function (value, element) { return true; };
 
     $.validator.addMethod('date', function (value, element) {
         if (this.optional(element)) {

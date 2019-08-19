@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Web.Mvc;
 using System.Web.Security;
+using static ChaosCC.Entity.Enumlar;
 
 namespace ChaosCC.UIYonetim.Controllers
 {
@@ -142,17 +143,46 @@ namespace ChaosCC.UIYonetim.Controllers
         }
 
         [Authorize]
-        public ActionResult DevamsizlikList()
+        public ActionResult DevamsizlikList(EnuTarihAralik enuTarihAralik = EnuTarihAralik.Son1Sene)
         {
+            ViewBag.TarihAralik = enuTarihAralik;
             List<KullaniciListDto> kullaniciDto = _servis.Get(new Kullanici { Aktif = true });
 
             List<KullaniciDevamsilikListDto> dto = new List<KullaniciDevamsilikListDto>();
+            DateTime dateBas = DateTime.Today;
+            DateTime dateBit = DateTime.Today;
+
+            switch (enuTarihAralik)
+            {
+                case EnuTarihAralik.Son3Ay:
+                    dateBas = DateTime.Today.AddMonths(-3);
+                    break;
+                case EnuTarihAralik.Son6Ay:
+                    dateBas = DateTime.Today.AddMonths(-6);
+                    break;
+                case EnuTarihAralik.BuSune:
+                    dateBas = new DateTime(DateTime.Today.Year, 1, 1);
+                    break;
+                case EnuTarihAralik.Son1Sene:
+                    dateBas = DateTime.Today.AddYears(-1);
+                    break;
+                case EnuTarihAralik.Tümü:
+                    dateBas = DateTime.MinValue;
+                    dateBit = DateTime.MaxValue;
+                    break;
+                default:
+                    break;
+            }
 
             foreach (var kullanici in kullaniciDto)
             {
                 KullaniciDevamsilikListDto devamsizlik = new KullaniciDevamsilikListDto();
                 devamsizlik.Kullanici = kullanici;
-                devamsizlik.Devamsizlik = _servisEtkinlik.GetKullaniciDevamsizlik(kullanici.Id, new DateTime(DateTime.Today.Year, 01, 01), DateTime.Today);
+
+          
+
+              
+                devamsizlik.Devamsizlik = _servisEtkinlik.GetKullaniciDevamsizlik(kullanici.Id, dateBas, dateBit);
                 dto.Add(devamsizlik);
             }
 

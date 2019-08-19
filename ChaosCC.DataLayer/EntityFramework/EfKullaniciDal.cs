@@ -1,4 +1,5 @@
-﻿using ChaosCC.DataLayer.Abstract;
+﻿using ChaosCC.CommonLibrary;
+using ChaosCC.DataLayer.Abstract;
 using ChaosCC.Entity;
 using System;
 using System.Collections.Generic;
@@ -55,9 +56,24 @@ namespace ChaosCC.DataLayer.EntityFramework
             Kullanici newEnt = Get(ent.Id);
             newEnt.Adi = ent.Adi;
             newEnt.Soyadi = ent.Soyadi;
-            newEnt.KullaniciAdi = ent.KullaniciAdi;
-            newEnt.Sifre = ent.Sifre;
+            newEnt.KullaniciAdi = ent.KullaniciAdi;            
             newEnt.EPosta = ent.EPosta;
+            newEnt.DogumTarihi = ent.DogumTarihi;
+            newEnt.EhliyetOn = ent.EhliyetOn;
+            newEnt.EhliyetArka = ent.EhliyetArka;
+            newEnt.Kangrubu = ent.Kangrubu;
+            newEnt.Rol = ent.Rol;
+            newEnt.Rutbesi = ent.Rutbesi;
+            newEnt.VoyagerRozet = ent.VoyagerRozet;
+            newEnt.Cep = ent.Cep;
+            newEnt.Yakin = ent.Yakin;
+            newEnt.YakinCep = ent.YakinCep;
+
+            if (ent.Sifre.IsNotNull())
+            {
+                newEnt.Sifre = ent.Sifre;
+            }
+
             newEnt.GuncelleyenId = ent.GuncelleyenId;
             newEnt.GuncellemeZamani = DateTime.Now;
             _context.SaveChanges();

@@ -76,6 +76,10 @@
     <Compile Include="Migrations\201904151011476_motosiklet.Designer.cs">
       <DependentUpon>201904151011476_motosiklet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908190849129_motor2.cs" />
+    <Compile Include="Migrations\201908190849129_motor2.Designer.cs">
+      <DependentUpon>201908190849129_motor2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -84,6 +88,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ChaosCC.CommonLibrary\ChaosCC.CommonLibrary.csproj">
+      <Project>{6E9943C0-23D1-45BC-B271-2069707D14A1}</Project>
+      <Name>ChaosCC.CommonLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ChaosCC.Dto\ChaosCC.Dto.csproj">
       <Project>{0746F80C-7408-4E79-BD60-A7846E78A6D0}</Project>
       <Name>ChaosCC.Dto</Name>
@@ -108,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904151011476_motosiklet.resx">
       <DependentUpon>201904151011476_motosiklet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908190849129_motor2.resx">
+      <DependentUpon>201908190849129_motor2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

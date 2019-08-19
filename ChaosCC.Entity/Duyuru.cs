@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using static ChaosCC.Entity.Enumlar;
 
 namespace ChaosCC.Entity
 {
@@ -18,11 +19,6 @@ namespace ChaosCC.Entity
         [Required]
         public string Yazi { get; set; }
     }
-    public enum EnuDuyuruTipi
-    {
-        Karar = 1,
-        Duyuru = 2,
-        Bilgilendirme = 3
-    }
+
 
 }

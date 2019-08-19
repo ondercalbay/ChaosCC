@@ -1,7 +1,7 @@
-﻿using ChaosCC.Entity;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using static ChaosCC.Entity.Enumlar;
 
 namespace ChaosCC.Dto
 {

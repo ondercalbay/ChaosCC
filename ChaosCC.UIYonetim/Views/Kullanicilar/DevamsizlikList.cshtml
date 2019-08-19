@@ -1,4 +1,6 @@
-﻿@using ChaosCC.CommonLibrary
+﻿@using ChaosCC.Entity
+@using ChaosCC.CommonLibrary
+
 @model IEnumerable<ChaosCC.Dto.KullaniciDevamsilikListDto>
 
 @{
@@ -8,130 +10,125 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script type="text/javascript">
-    function Ac () {
-        $('#accordion .collapse').collapse('toggle');
-        //devamsizlikAccordion
-    };
-</script>
-
 <h2>@ViewBag.Title</h2>
-<button class="btn btn-primary" onclick="self.print()"><i class="glyphicon-print"></i>Yazdır</button>
-<button class="btn btn-primary" onclick="Ac()"><i class="glyphicon-print"></i>Hepsini Aç</button>
-
+<form action="DevamsizlikList">
+    <div class="form-group">
+        <select class="form-control" id="enuTarihAralik" name="enuTarihAralik" onchange = "this.form.submit();" >
+            @foreach (Enumlar.EnuTarihAralik item in (Enumlar.EnuTarihAralik[])Enum.GetValues(typeof(Enumlar.EnuTarihAralik)))
+            {
+                <option Selected=@(item==ViewBag.TarihAralik) value=@item.ToInt()>@item.ToDisplay()</option>
+            }
+        </select>
+    </div>    
+    <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Hepsini Aç</button>
+    <button class="btn btn-outline-dark" onclick="self.print()"><i class="glyphicon-print"></i>Yazdır</button>
+</form>
 <hr />
 
+@foreach (var kul in Model)
+{
+    int i = 0;
+    int geldiCount = 0;
+    foreach (var item in kul.Devamsizlik)
+    {
+        i += 1;
+        geldiCount = geldiCount + (item.Geldi ? 1 : 0);
+    }
 
-<div id="accordion">
-    <ul class="list-group">
-        @foreach (var kul in Model)
-        {
-
-
-            int i = 0;
-            int geldiCount = 0;
-            foreach (var item in kul.Devamsizlik)
-            {
-                i += 1;
-                geldiCount = geldiCount + (item.Geldi ? 1 : 0);
-            }
-
-
-            <li class="list-group-item">
-                <div class="row">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="btn-group form-control" role="group" aria-label="Basic example">
+                    <div class="col-sm-9">
+                        <button class="btn form-control text-left" data-toggle="collapse" data-target=@("#"+ kul.Kullanici.Id) aria-expanded="false" aria-controls=@("#"+ kul.Kullanici.Id)>
+                            <b>@kul.Kullanici.KullaniciAdi</b>
+                        </button>
+                    </div>
                     <div class="col-sm-3">
-                        <div class="btn-group form-control" role="group" aria-label="Basic example">
+                        <div class="btn-group" role="group" aria-label="Basic example">
                             <button class="btn form-control text-right" data-toggle="collapse" data-target=@("#"+ kul.Kullanici.Id) aria-expanded="false" aria-controls=@("#"+ kul.Kullanici.Id)>
                                 <b>@geldiCount / @i</b>
                             </button>
                             <button type="button" class="btn form-control text-right dropdown-toggle" data-toggle="collapse" data-target=@("#"+ kul.Kullanici.Id) aria-expanded="false" aria-controls=@("#"+ kul.Kullanici.Id)><b>% @Math.Round(i != 0 ? (geldiCount / (decimal)i * 100) : 0)</b></button>
                         </div>
                     </div>
-                    <div class="col-sm-19">
-                        <b>@kul.Kullanici.KullaniciAdi</b>
-                    </div>
                 </div>
+            </div>
 
 
-                <div id=@kul.Kullanici.Id class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                    <hr />
-                    <div class="card-body">
-                        <table class="table table-striped small">
-                            <tr>
-                                <th class="text-right">
-                                    Sıra
-                                </th>
-                                <th>
-                                    Etkinlik Tarihi
-                                </th>
-                                <th>
-                                    Etkinlik Türü
-                                </th>
-                                <th>
-                                    Etkinlik Adı
-                                </th>
-                                <th>
-                                    Etkinlik Açıklama
-                                </th>
-                                <th>
-                                    Geldi
-                                </th>
-                                <th>
-                                    Devamsızlık Açıklama
-                                </th>
-                            </tr>
-                            @{
-                                i = 0;
-                                geldiCount = 0;
-                                foreach (var item in kul.Devamsizlik)
-                                {
-                                    i += 1;
-                                    geldiCount = geldiCount + (item.Geldi ? 1 : 0);
-                                    <tr @(item.Geldi ? "" : "class=table-warning")>
-                                        <td class="text-right">
-                                            @i
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.EtkinlikTarihi)
-                                        </td>
-                                        <td>
-                                            @item.EtkinlikTuru.ToDisplay()
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.EtkinlikAdi)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.EtkinlikAciklama)
-                                        </td>
-                                        <td>
-                                            @(item.Geldi ? "Geldi" : "Yok")
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.DevamsizlikAciklama)
-                                        </td>
-                                    </tr>
-                                }
-                                <tr>
-                                    <th>Toplam</th>
-                                    <th>@geldiCount / @i</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th>Oran</th>
-                                    <th>% @Math.Round(i != 0 ? (geldiCount / (decimal)i * 100) : 0)</th>
-                                    <th></th>
+            <div id=@kul.Kullanici.Id class="collapse multi-collapse" aria-labelledby="headingOne">
+                <hr />
+                <div class="card-body">
+                    <table class="table table-striped small">
+                        <tr>
+                            <th class="text-right">
+                                Sıra
+                            </th>
+                            <th>
+                                Etkinlik Tarihi
+                            </th>
+                            <th>
+                                Etkinlik Türü
+                            </th>
+                            <th>
+                                Etkinlik Adı
+                            </th>
+                            <th>
+                                Etkinlik Açıklama
+                            </th>
+                            <th>
+                                Geldi
+                            </th>
+                            <th>
+                                Devamsızlık Açıklama
+                            </th>
+                        </tr>
+                        @{
+                            i = 0;
+                            geldiCount = 0;
+                            foreach (var item in kul.Devamsizlik)
+                            {
+                                i += 1;
+                                geldiCount = geldiCount + (item.Geldi ? 1 : 0);
+                                <tr @(item.Geldi ? "" : "class=table-warning")>
+                                    <td class="text-right">
+                                        @i
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EtkinlikTarihi)
+                                    </td>
+                                    <td>
+                                        @item.EtkinlikTuru.ToDisplay()
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EtkinlikAdi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EtkinlikAciklama)
+                                    </td>
+                                    <td>
+                                        @(item.Geldi ? "Geldi" : "Yok")
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DevamsizlikAciklama)
+                                    </td>
                                 </tr>
                             }
+                            <tr>
+                                <th>Toplam</th>
+                                <th>@geldiCount / @i</th>
+                                <th></th>
+                                <th></th>
+                                <th>Oran</th>
+                                <th>% @Math.Round(i != 0 ? (geldiCount / (decimal)i * 100) : 0)</th>
+                                <th></th>
+                            </tr>
+                        }
 
-                        </table>
-                    </div>
+                    </table>
                 </div>
-            </li>
-
-
-
-
-
-        }
-    </ul>
-</div>
+            </div>
+        </div>
+    </div>
+}
 

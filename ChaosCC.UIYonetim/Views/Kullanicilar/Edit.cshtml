@@ -48,7 +48,60 @@
                 @Html.ValidationMessageFor(model => model.EPosta, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <div class="form-group">
+            @Html.LabelFor(model => model.DogumTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.DogumTarihi, new { @class = "form-control datepicker" })
+                @Html.ValidationMessageFor(model => model.DogumTarihi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Rol, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.Rol, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Rol, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Rutbesi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.Rutbesi, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Rutbesi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Kangrubu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.Kangrubu, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Kangrubu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.VoyagerRozet, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.VoyagerRozet, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.VoyagerRozet, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cep, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="control-label col-md-2">Yakın - Cep</div>
+            <div class="col-md-10">
+                <div class="input-group mb-3">
+                    @Html.EditorFor(model => model.Yakin, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">-</span>
+                    </div>
+                    @Html.EditorFor(model => model.YakinCep, new { htmlAttributes = new { @class = "form-control" } })
+                </div>              
+            </div>
+        </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Sifre, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
