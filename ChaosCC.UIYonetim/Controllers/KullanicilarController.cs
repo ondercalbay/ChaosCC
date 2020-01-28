@@ -13,6 +13,7 @@ using static ChaosCC.Entity.Enumlar;
 
 namespace ChaosCC.UIYonetim.Controllers
 {
+    [Authorize]
     public class KullanicilarController : Controller
     {
         private readonly IKullaniciManager _servis = new KullaniciManager(new EfKullaniciDal());
@@ -24,11 +25,13 @@ namespace ChaosCC.UIYonetim.Controllers
 
         }
 
+        [AllowAnonymous]
         public ActionResult Login()
         {
             return View(new KullaniciLoginDto());
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult Login(KullaniciLoginDto kullanici, string returnUrl)
         {
@@ -49,6 +52,7 @@ namespace ChaosCC.UIYonetim.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult SignOut()
         {
             FormsAuthentication.SignOut();
@@ -79,7 +83,7 @@ namespace ChaosCC.UIYonetim.Controllers
 
         //    return View(kullaniciDto);
         //}
-        [Authorize]
+        
         public ActionResult Edit(int? id)
         {
             KullaniciEditDto kullaniciDto = new KullaniciEditDto();
@@ -103,7 +107,7 @@ namespace ChaosCC.UIYonetim.Controllers
         //    return View(manager.Get(id));
         //}
 
-        [Authorize]
+        
         [HttpPost]
         public ActionResult Edit(KullaniciEditDto kullanici)
         {
@@ -120,7 +124,7 @@ namespace ChaosCC.UIYonetim.Controllers
 
         }
 
-        [Authorize]
+        
         [HttpGet]
         public ActionResult Delete(int id)
         {
@@ -129,7 +133,7 @@ namespace ChaosCC.UIYonetim.Controllers
 
         }
 
-        [Authorize]
+        
         public ActionResult Devamsizlik(int id)
         {
             KullaniciEditDto kullaniciDto = new KullaniciEditDto();
@@ -142,7 +146,7 @@ namespace ChaosCC.UIYonetim.Controllers
             return View(devamsizlikDto);
         }
 
-        [Authorize]
+        
         public ActionResult DevamsizlikList(EnuTarihAralik enuTarihAralik = EnuTarihAralik.Son1Sene)
         {
             ViewBag.TarihAralik = enuTarihAralik;
@@ -187,8 +191,6 @@ namespace ChaosCC.UIYonetim.Controllers
             }
 
             return View(dto);
-        }
-
-
+        } 
     }
 }

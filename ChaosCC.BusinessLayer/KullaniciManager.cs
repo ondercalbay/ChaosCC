@@ -85,17 +85,9 @@ namespace ChaosCC.BusinessLayer
             }
             else
             {
-                KullaniciSessionDto result = Mapper.Map<KullaniciSessionDto>(kul);
-                if (kul.KullaniciAdi.ToLower().Equals("çalbay"))
-                {
-                    result.RolAdi = "admin";
-                }
-                else
-                {
-                    result.RolAdi = "izleyici";
-                }
+                KullaniciSessionDto result = new KullaniciSessionDto { Id = kul.Id, RolAdi = kul.Rol.ToString() };
                 
-                return Mapper.Map<KullaniciSessionDto>(result);
+                return result;
             }
 
 

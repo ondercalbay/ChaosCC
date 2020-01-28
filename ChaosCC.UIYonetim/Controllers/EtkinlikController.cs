@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace ChaosCC.UIYonetim.Controllers
 {
+    [Authorize]
     public class EtkinlikController : Controller
     {
         private IEtkinlikManager _service;
