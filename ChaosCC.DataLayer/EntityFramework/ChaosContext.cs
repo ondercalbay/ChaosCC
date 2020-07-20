@@ -1,5 +1,6 @@
 ﻿using ChaosCC.Entity;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace ChaosCC.DataLayer.EntityFramework
 {
@@ -12,5 +13,17 @@ namespace ChaosCC.DataLayer.EntityFramework
         public DbSet<Etkinlik> Etkinlikler { get; set; }
 
         public DbSet<Motosiklet> Motosikletler { get; set; }
+
+        public DbSet<Marka> Markalar { get; set; }
+
+        public DbSet<Model> Modeller { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();             
+
+            base.OnModelCreating(modelBuilder);
+        } 
     }
 }

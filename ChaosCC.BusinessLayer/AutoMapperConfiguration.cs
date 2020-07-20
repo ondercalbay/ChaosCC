@@ -57,6 +57,15 @@ namespace ChaosCC.BusinessLayer
 
                 cfg.CreateMap<Etkinlik, EtkinlikEditDto>();
                 cfg.CreateMap<EtkinlikEditDto, Etkinlik>();
+
+                cfg.CreateMap<Marka, MarkaEditDto>();
+                cfg.CreateMap<MarkaEditDto, Marka>();
+
+                cfg.CreateMap<Model, ModelEditDto>();
+                cfg.CreateMap<ModelEditDto, Model>();
+
+                cfg.CreateMap<Motosiklet, MotosikletEditDto>();
+                cfg.CreateMap<MotosikletEditDto, Motosiklet>();
             }
             );
 

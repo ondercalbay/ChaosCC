@@ -44,3 +44,43 @@
         return valid;
     });
 });
+
+function Sil(controller,id) {
+    if (confirm('Silmek istediğinize emin misiniz?')) {
+        window.location = "/" + controller+"/Delete/" + id;
+    }
+}
+
+
+function GetModeller(ddlMarka, ddlModel) {    
+    $.getJSON("/Modeller/GetJson", { id: ddlMarka.val() },
+        function (data) {
+            ddlModel.empty();
+            ddlModel.append($('<option/>', {
+                val: null,
+                text: "Seçiniz"
+            }));
+            $.each(data, function (index, itemData) {
+                ddlModel.append($('<option/>', {
+                    value: itemData.Id,
+                    text: itemData.Adi
+                }));
+            });
+        }
+    );
+}
+
+function getSelectValues(select) {
+    var result = [];
+    var options = select && select.options;
+    var opt;
+
+    for (var i = 0, iLen = options.length; i < iLen; i++) {
+        opt = options[i];
+
+        if (opt.selected) {
+            result.push(opt.value || opt.text);
+        }
+    }
+    return result;
+}

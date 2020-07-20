@@ -38,7 +38,7 @@ namespace ChaosCC.UIYonetim
         {
             var containerBuilder = new ContainerBuilder();
 
-            List<string> listClasslar = new List<string> { "Kullanici", "Duyuru", "Etkinlik" };
+           // List<string> listClasslar = new List<string> { "Kullanici", "Duyuru", "Etkinlik","Marka","Model","Motosiklet" };
 
             //foreach (string item in listClasslar)
             //{
@@ -48,18 +48,21 @@ namespace ChaosCC.UIYonetim
 
 
             containerBuilder.RegisterType<KullaniciManager>().As<IKullaniciManager>().WithParameter("dal", new EfKullaniciDal()).InstancePerLifetimeScope();
+            
             containerBuilder.RegisterType<DuyuruManager>().As<IDuyuruManager>().WithParameter("dal", new EfDuyuruDal()).InstancePerLifetimeScope();
 
             List<Parameter> prms = new List<Parameter>();
             prms.Add(new NamedParameter("dal", new EfEtkinlikDal()));
             prms.Add(new NamedParameter("dalKullanici", new EfKullaniciDal()));
-
             containerBuilder.RegisterType<EtkinlikManager>().As<IEtkinlikManager>().WithParameters(prms).InstancePerLifetimeScope();
 
+            containerBuilder.RegisterType<MarkaManager>().As<IMarkaManager>().WithParameter("dal", new EfMarkaDal()).InstancePerLifetimeScope();
+            containerBuilder.RegisterType<ModelManager>().As<IModelManager>().WithParameter("dal", new EfModelDal()).InstancePerLifetimeScope();
+            containerBuilder.RegisterType<MotosikletManager>().As<IMotosikletManager>().WithParameter("dal", new EfMotosikletDal()).InstancePerLifetimeScope();
 
 
             //containerBuilder.RegisterType<EtkinlikManager>().As<IEtkinlikManager>().WithParameter("dal", new EfEtkinlikDal()).InstancePerLifetimeScope();
-            
+
             //containerBuilder.RegisterType<IKullaniciDal>().As<EfKullaniciDal>().InstancePerLifetimeScope();
 
             //containerBuilder.RegisterWebApiFilterProvider(GlobalConfiguration.Configuration);

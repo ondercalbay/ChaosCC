@@ -1,0 +1,44 @@
+﻿@using ChaosCC.UIYonetim.Helpers
+@model IEnumerable<ChaosCC.Dto.MotosikletListDto>
+
+@{
+    ViewBag.Title = "Motosikletler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string controller = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+<p>
+    <a class="btn btn-primary" href=@($"/{controller}/Edit/")><i class="glyphicon glyphicon-calendar"></i> Yeni</a>
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.MarkaAdi)</th>
+        <th>@Html.DisplayNameFor(model => model.ModelAdi)</th>
+        <th>@Html.DisplayNameFor(model => model.KullaniciKullaniciAdi)</th>
+        <th>@Html.DisplayNameFor(model => model.Plaka)</th>
+        <th class="text-center">İşlem</th>
+    </tr>
+    @{
+        int i = 0;
+        foreach (var item in Model)
+        {
+            i += 1;
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.MarkaAdi)</td>
+                <td>@Html.DisplayFor(modelItem => item.ModelAdi)</td>
+                <td>@Html.DisplayFor(modelItem => item.KullaniciKullaniciAdi)</td>
+                <td>@Html.DisplayFor(modelItem => item.Plaka)</td>
+                <td class="text-center">
+                    <a class="btn btn-sm btn-outline-primary" href=@($"/{controller}/Edit/{item.Id}")><i class="fas fa-pencil-alt"></i></a>
+                    @if (UserHelper.Kullanici.RolAdi.ToLower().Equals("admin"))
+                    {
+                        <a class="btn btn-sm btn-outline-danger" href=@($"javascript:Sil('{controller}',{item.Id});" )><i class="fas fa-trash"></i></a>
+                    }
+                </td>
+            </tr>
+        }
+    }
+
+</table>

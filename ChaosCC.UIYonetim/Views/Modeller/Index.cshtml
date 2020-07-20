@@ -1,0 +1,51 @@
+﻿@using ChaosCC.UIYonetim.Helpers
+@model IEnumerable<ChaosCC.Dto.ModelListDto>
+
+@{
+    ViewBag.Title = "Modeller";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+<p>
+    <a class="btn btn-primary" href=@("/Modeller/Edit/?markaid="+ViewContext.RouteData.Values["id"])><i class="glyphicon glyphicon-calendar"></i> Yeni</a>
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>Marka Adı</th>
+        <th>
+            Model
+        </th>
+        <th class="text-center">İşlem</th>
+    </tr>
+    @{
+        int i = 0;
+        foreach (var item in Model)
+        {
+            i += 1;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MarkaAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adi)
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-sm btn-outline-primary" href=@("/Modeller/Edit/"+item.Id+"?markaid="+ViewContext.RouteData.Values["id"])><i class="fas fa-pencil-alt"></i></a>
+                    @if (UserHelper.Kullanici.RolAdi.ToLower().Equals("admin"))
+                    {
+                        <a class="btn btn-sm btn-outline-danger" href=@($"javascript:Sil('{HttpContext.Current.Request.RequestContext.RouteData.Values["controller"]}',{item.Id});" )><i class="fas fa-trash"></i></a>
+                    }
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <a href="/Markalar" class="btn btn-outline-danger">Listeye Geri Dön</a>
+    </div>
+</div>

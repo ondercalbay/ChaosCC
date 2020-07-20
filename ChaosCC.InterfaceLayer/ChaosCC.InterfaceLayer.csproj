@@ -45,6 +45,9 @@
     <Compile Include="IEtkinlikManager.cs" />
     <Compile Include="IGenericManager.cs" />
     <Compile Include="IKullaniciManager.cs" />
+    <Compile Include="IMarkaManager.cs" />
+    <Compile Include="IModelManager.cs" />
+    <Compile Include="IMotosikletManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test.cs" />
   </ItemGroup>

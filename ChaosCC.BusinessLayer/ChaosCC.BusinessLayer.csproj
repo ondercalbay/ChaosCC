@@ -50,6 +50,9 @@
     <Compile Include="DuyuruManager.cs" />
     <Compile Include="EtkinlikManager.cs" />
     <Compile Include="KullaniciManager.cs" />
+    <Compile Include="MarkaManager.cs" />
+    <Compile Include="ModelManager.cs" />
+    <Compile Include="MotosikletManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

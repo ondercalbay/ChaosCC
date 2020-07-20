@@ -1,0 +1,47 @@
+﻿@using ChaosCC.UIYonetim.Helpers
+@model IEnumerable<ChaosCC.Dto.MarkaListDto>
+
+@{
+    ViewBag.Title = "Markalar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+<p>
+    <a class="btn btn-primary" href=@("/Markalar/Edit/")><i class="glyphicon glyphicon-calendar"></i> Yeni</a>
+</p>
+<table class="table table-striped">
+    <tr>       
+        <th>
+            @Html.DisplayNameFor(model => model.Adi)
+        </th>    
+        <th>
+            Modeller
+        </th>
+        <th class="text-center">İşlem</th>
+    </tr>
+    @{
+        int i = 0;
+        foreach (var item in Model)
+        {
+            i += 1;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adi)
+                </td>               
+                <td>
+                    <a class="btn btn-sm btn-outline-primary" href=@("/Modeller/Index/"+item.Id)><i class="fas fa-pencil-alt"></i></a>
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-sm btn-outline-primary" href=@("/Markalar/Edit/"+item.Id)><i class="fas fa-pencil-alt"></i></a>
+                    @if (UserHelper.Kullanici.RolAdi.ToLower().Equals("admin"))
+                    {
+                        <a class="btn btn-sm btn-outline-danger" href=@($"javascript:Sil({item.Id});" )><i class="fas fa-trash"></i></a>
+                    }
+                </td>
+            </tr>
+        }
+    }
+
+</table>

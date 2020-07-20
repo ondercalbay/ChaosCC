@@ -75,6 +75,12 @@
     <Compile Include="KullaniciListDto.cs" />
     <Compile Include="KullaniciLoginDto.cs" />
     <Compile Include="KullaniciSessionDto.cs" />
+    <Compile Include="MarkaEditDto.cs" />
+    <Compile Include="MarkaListDto.cs" />
+    <Compile Include="ModelEditDto.cs" />
+    <Compile Include="ModelListDto.cs" />
+    <Compile Include="MotosikletEditDto.cs" />
+    <Compile Include="MotosikletListDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

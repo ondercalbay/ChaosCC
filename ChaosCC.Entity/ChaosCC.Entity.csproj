@@ -52,6 +52,8 @@
     <Compile Include="KasaHareketleri.cs" />
     <Compile Include="KilometreBilgi.cs" />
     <Compile Include="Kullanici.cs" />
+    <Compile Include="Marka.cs" />
+    <Compile Include="Model.cs" />
     <Compile Include="Motosiklet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

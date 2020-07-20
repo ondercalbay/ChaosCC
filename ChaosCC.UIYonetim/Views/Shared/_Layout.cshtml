@@ -33,6 +33,12 @@
                 <li class="nav-item">
                     @Html.ActionLink("Devamsızlık Listesi", "DevamsizlikList", "Kullanicilar", null, new { @class = "nav-link" })
                 </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Markalar", "Index", "Markalar", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Motosikletler", "Index", "Motosikletler", null, new { @class = "nav-link" })
+                </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">                
                 @Html.ActionLink("Oturumu Kapat", "SignOut", "Kullanicilar", null, new { @class = "btn btn-outline-danger my-2 my-sm-0" })                
